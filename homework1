@@ -1,0 +1,196 @@
+1)#include <stdio.h>
+
+int main()
+{   
+    int x = 0;
+    int y = 0;
+    
+    printf("please enter the x:");
+    scanf("%i", &x);
+    printf("please enter the y:");
+    scanf("%i", &y);
+    
+    
+    int result = (x * y + 21 * x / y - 200);
+    printf("result = %i", result);
+    
+    return 0;
+}
+
+2)#include <stdio.h>
+
+int main(){
+    char sym;
+
+    printf("Enter an uppercase letter: ");
+    scanf("%c", &sym);
+
+    if(sym >= 'A' && sym <= 'Z') {
+        char num = sym + ('a' - 'A');
+        printf("The lowercase letter is: %c\n",num);
+    } else {
+        printf("Invalid input. Please enter an uppercase letter.\n");
+    }
+
+    return 0;
+}
+
+3)#include <stdio.h>
+
+int main(){
+    char sym = 0;
+    
+    printf("enter the symbol: ");
+    scanf("%c", &sym);
+    
+    if(sym >= '0' && sym <= '9'){
+        char num = ('0' - '9');
+        printf("true");
+    }else{
+        printf("false");
+    }
+    
+    return 0;
+}
+
+4)#include <stdio.h>
+
+int main(){
+    char letter = 0;
+    
+    printf("enter the letter: ");
+    scanf("%c", &letter);
+    
+    if(letter >= 'a' && letter <= 'z'){
+        if(letter == 'a' || letter == 'i' || letter == 'o' || letter == 'u' || letter == 'e'){
+            printf("%c dzaynavor e!", letter);
+        }else{
+            printf("%c baxadzayn e!", letter);
+        }
+    }else{ 
+        printf("Invalid input. Please enter a valid letter.\n");
+    }
+    
+    
+    return 0;
+}
+
+5)#include <stdio.h>
+
+int main(){
+    int x = 0;
+    int y = 0;
+    
+    printf("please enter the x:");
+    scanf("%i", &x);
+    printf("please enter the y:");
+    scanf("%i", &y);
+    
+    if(x > y){
+        printf("%i x mec e!", x);
+    }else{
+        printf("%i y mec e!", y);
+    }
+}
+
+6)#include <stdio.h>
+
+int main(){
+    int num1, num2, num3;
+    
+    printf("enter the first number: ");
+    scanf("%i", &num1);
+    printf("enter the second number: ");
+    scanf("%i", &num2);
+    printf("enter the third number: ");
+    scanf("%i", &num3);
+    
+    if (num1 == num2 || num1 == num3 || num2 == num3) {
+        int max = num1; 
+        
+        if(num2 > max){
+            max = num2;
+        }else if (num3 > max) {
+            max = num3;
+        }
+        
+    printf("Two numbers are equal. The largest number is: %i\n", max);
+    } else {
+        printf("No two numbers are equal.\n");
+    }
+}
+
+7)#include <stdio.h>
+
+int main(){
+    for(int i = 0; i <= 100; ++i){
+        printf("%i", i);
+    }
+}
+
+8)#include <stdio.h>
+
+int main(){
+    for(int i = 0; i <= 100; ++i){
+        if(i % 2 != 0)
+        printf("%i", i);
+    }
+}
+
+9)#include <stdio.h>
+
+int main(){
+    int num = 0;
+    
+    printf("Enter an integer greater than 12: ");
+    scanf("%i", &num);
+    
+    if (num <= 12) {
+        printf("Please enter an integer greater than 12.\n");
+        return 1;  
+    }
+    
+    int sum = 0;
+    int count = num;
+    
+    while (num > 0) {
+        sum += num % 10;
+        num /= 10;
+    }
+
+    printf("The sum of the digits of %i is: %i\n", count, sum);
+    
+    return 0;
+    
+}
+
+10)#include <stdio.h>
+
+int main(){
+    int num1, num2, num3, num4;
+    
+    printf("enter the first number: ");
+    scanf("%i", &num1);
+    printf("enter the second number: ");
+    scanf("%i", &num2);
+    printf("enter the third number: ");
+    scanf("%i", &num3);
+    printf("enter the quarter number: ");
+    scanf("%i", &num4);
+    
+    if (num1 + num2 + num3 + num4 == 0) {
+        int min = num1; 
+        
+        if(num2 < min){
+            min = num2;
+        }else if (num3 < min) {
+            min = num3;
+        }else if (num4 < min){
+            min = num4;
+        }
+        
+    printf("4 tveri gumary havasar e 0. Poqr tivy: %i\n", min);
+    } else {
+        printf("4 tveri gumary havasar che 0.\n");
+    }
+}
