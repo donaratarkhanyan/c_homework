@@ -175,3 +175,20 @@ int main() {
 	std::cout << "a = " << a << std::endl;
 	std::cout << "b = " << b << std::endl;
 }
+10)
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a = 42;
+    int b = 42;
+    int c = 42;
+    cout << "Monsieur cuts a striking figure!" << endl;
+    cout << "a = " << a << " (decimal for 42)" << endl;
+    cout << hex; 
+    cout << "b = " << b << " (hexadecimal for 42)" << endl;
+    cout << oct; 
+    cout << "c = " << c << " (octal for 42)" << endl;
+    return 0;
+}
