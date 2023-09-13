@@ -133,9 +133,7 @@ int main() {
 		std::cout << i << std::endl;
 	   }
 		
-		
 	}
-
 
 }
 8)
@@ -228,5 +226,21 @@ int main()
     else
     cout << Fave << " is right!\n";
     } while (n != Fave);
+    return 0;
+}
+
+13)//mutqagrac tvery minchev 0 tpi(drakan, bacasakan)
+#include <iostream>
+int main()
+{
+    int num = 0;
+    std::cout << "Enter the number: ";
+    std::cin >> num;
+    int a = abs(num) / num;
+    for (int i = num; i != -a; i -= a){
+        std::cout << i << " ";
+        
+    }
+    
     return 0;
 }
