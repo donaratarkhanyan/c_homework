@@ -244,3 +244,66 @@ int main()
     
     return 0;
 }
+
+14)//mutqagrvac symbolneric miayn tarern e tpum
+#include <iostream>
+#include <cstring>
+
+int main()
+{
+    int j = 0;
+    char ch1[100];
+    std::cout << "enter the word: ";
+    std::cin >> ch1;
+    for(int i = 0; i < strlen(ch1); ++i){
+        if(ch1[i] >= 'a' && ch1[i] <= 'z' || ch1[i] >= 'A' && ch1[i] <= 'Z'){
+            ch1[j] = ch1[i];
+            ++j;
+        } 
+    }
+    ch1[j] = '\0';
+    std::cout << ch1;
+
+    return 0;
+}
+
+15)// hashvum e mutqagrvac toxi erkarutyuny
+#include <iostream>
+
+int main()
+{
+    char ch[100];
+    int lenght = 0;
+    std::cout << "enter the symbols: ";
+    std::cin >> ch;
+    
+    while(ch[lenght]){
+        ++lenght;
+    }
+    std::cout << lenght;
+
+    return 0;
+}
+16)//sortavorum e tarery mi koxm synbolnery mi koxm
+#include <iostream>
+#include <cstring>
+
+int main()
+{
+    int j = 0;
+    int temp;
+    char ch1[100];
+    std::cout << "enter the word: ";
+    std::cin >> ch1;
+    for(int i = 0; i < strlen(ch1); ++i){
+        if(ch1[i] >= 'a' && ch1[i] <= 'z' || ch1[i] >= 'A' && ch1[i] <= 'Z'){
+            temp = ch1[i];
+            ch1[i] = ch1[j];
+            ch1[j] = temp;
+            ++j;
+        } 
+    }
+    std::cout << ch1;
+
+    return 0;
+}
