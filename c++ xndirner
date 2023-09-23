@@ -1,0 +1,247 @@
+1.Ստեղծել sym անունով char տիպի փոփոխական։ Գրել ծրագիր, որը օգտվողին թույլ կտա մուտքագրել sym անունով փոփոխականի արժեքը, 
+որը լինելու է լատինական այբուբենի մեծատառ։ Տպել էկրանին մուտքագրված տառին համապատասխանող փոքրատառը։
+#include <iostream>
+int main()
+{
+    char  sym;
+    do{
+        std::cout << "Enter the letter: ";
+        std::cin >> sym;
+        
+    }while(sym < 'A' || sym > 'Z');
+    sym = sym + 32;
+    std::cout << sym;
+   return 0;
+}
+
+2. Ստեղծել sym անունով char տիպի փոփոխական։ Գրել ծրագիր, որը օգտվողին թույլ կտա մուտքագրել sym անունով փոփոխականի արժեքը։ 
+Տպել էկրանին true եթե մուտքագրված սիմվոլը թվանշան է հակառակ դեպքում տպել false:
+#include <iostream>
+int main()
+{
+    char  sym;
+    std::cout << "Enter the symbol: ";
+    std::cin >> sym;
+        
+    if(sym > '0' && sym < '9'){
+        std::cout << "true";
+    }else{
+        std::cout << "false";
+    }
+   return 0;
+}
+
+3.Գրել ծրագիր, որը թույլ կտա օգտվողին մուտքագրել թիվ, ստուգել և տպել՝ արդյոք թիվը զույգ է, թե կենտ:
+#include <iostream>
+int main()
+{
+    int num;
+    std::cout << "Enter the number: ";
+    std::cin >> num;
+    if (num % 2 == 0) {
+        std::cout << "zuyg";
+    }else {
+        std::cout << "kent";
+    }
+}
+
+4.Գրել ծրագիր, որը թույլ կտա օգտվողին մուտքագրել տառ, ստուգել և տպել տառը բաղաձայն է, թե ձայնավոր:
+#include <iostream>
+int main()
+{
+    char ch;
+    do {
+        std::cout << "Enter the letter: ";
+        std::cin >> ch;
+    } while ((ch < 'A' || ch > 'Z') && (ch < 'a' || ch > 'z'));
+    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'|| ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U')
+    {
+        std::cout << ch << " is a dzayavor";
+        
+    }else {
+        std::cout << ch << " is a baghadzyn";
+        
+    }
+}
+
+5.Գրել ծրագիր, որը թույլ կտա օգտվողին մուտքագրել երկու թիվ, ստուգել և տպել դրանցից ամենամեծը:
+#include <iostream>
+int main()
+{
+    int a;
+    int b;
+    std::cout << "Enter the first number: ";
+    std::cin >> a;
+    std::cout << "Enter the second number: ";
+    std::cin >> b;
+    
+    if (a > b){
+        std::cout << a;
+    }else {
+        std::cout << b;
+    }
+    
+}
+
+6.Գրել ծրագիր, որը թույլ կտա օգտվողին մուտքագրել երեք թվեր, եթե երեք թվերից 2-ը հավասար են՝ տպել այդ երեք թվերից ամենամեծը։
+#include <iostream>
+int main()
+{
+    int a, b, c;
+    std::cout << "Enter the three numbers: ";
+    std::cin >> a >> b >> c;
+    
+    if (a == b && a == c){
+        std::cout << "3n el irar havasar en!";
+    }else if (a >= b && a >= c) {
+        std::cout << "mecy = " << a;
+    }else if (b >= a && b >= c) {
+        std::cout << "mecy = " << b;
+    }else {
+        std::cout << "mecy = " << c;
+    }
+}
+
+7.Գրել ծրագիր, որը օգտվողին թույլ կտա մուտքագրել չորս թիվ, եթե այդ թվերի գումարը հավասար է 0-ի՝ տպել նրանցից ամենափոքրը։
+#include <iostream>
+
+int main()
+{
+    int num1 = 0;
+    int num2 = 0;
+    int num3 = 0;
+    int num4 = 0;
+    std::cout << "Enter  the 4 numbers: ";
+    std::cin >> num1 >> num2 >> num3 >> num4;
+    if((num1 + num2 + num3 + num4) == 0){
+        if ((num1 < num2) && (num1 < num3) && (num1 < num4)){
+            std::cout << num1;
+        }else if ((num2 < num1) && (num2 < num3) && (num2 < num4)){
+            std::cout << num2;
+        }else if ((num3 < num1) && (num3 < num2) && (num3 < num4)){
+            std::cout << num3;
+        }else if ((num4 < num1) && (num4 < num3) && (num4 < num2)){
+                std::cout << num4;
+                
+            }
+    }else{
+        std::cout << "false";
+    }
+}
+
+8.Գրել ծրագիր, որը օգտվողին թույլ է տալիս մուտքագրել տարի, ստուգում և տպում է տարին նահանջ է, թե ոչ:
+#include <iostream>
+int main()
+{
+    int year = 0;
+    std::cout << "Enter the year: ";
+    std::cin >> year;
+    
+    if(year % 4 == 0){
+        std::cout << year << " nahanj tari e !!!";
+    }else{
+        std::cout << year << " nahanj tari chi !!!";
+    }
+    
+}
+
+9.Գրել ծրագիր, որը օգտվողին թույլ կտա մուտքագրել երկու սիմվոլները, ստուգեք արդյոք սիմվոլները արտահայտում են նույն տառի մեծատառ և փոքրատառ տեսքերը, թե ոչ։
+1տարբերակ
+#include <iostream>
+int main()
+{
+    char ch1;
+    char ch2;
+    std::cout << "Enter two charecter: ";
+    std::cin >> ch1 >> ch2;
+    if((ch1 == (ch2 + 32)) || (ch2 == (ch1 - 32))){
+        std::cout << "Yes";
+    }else if((ch1 == (ch2 - 32)) || (ch2 == (ch1 + 32))){
+        std::cout << "Yes";
+    }else
+        std::cout << "No";
+    return 0;
+}
+
+2տարբերակ
+#include <iostream>
+#include <cctype> // for toupper and tolower functions
+
+int main() {
+    char symbol1, symbol2;
+
+    // Input symbols from the user
+    std::cout << "Enter the first symbol: ";
+    std::cin >> symbol1;
+    std::cout << "Enter the second symbol: ";
+    std::cin >> symbol2;
+
+    // Convert the symbols to uppercase and lowercase
+    char upper1 = toupper(symbol1);
+    char upper2 = toupper(symbol2);
+    char lower1 = tolower(symbol1);
+    char lower2 = tolower(symbol2);
+
+    // Check if the symbols represent the same letter
+    if (upper1 == upper2 || lower1 == lower2) {
+        std::cout << "The symbols represent the same letter." << std::endl;
+    } else {
+        std::cout << "The symbols do not represent the same letter." << std::endl;
+    }
+
+    return 0;
+}
+
+10. Գրել ծրագիր, որը օգտվողին թույլ կտա մուտքագրել թիվ, և հաշվել նրա ֆակտորիալը:
+#include <iostream>
+int main()
+{
+    int ArSize = 0;
+    std::cin >> ArSize;
+    long factorials[ArSize];
+    factorials[1] = factorials[0] = 1L;
+    for (int i = 2; i < ArSize; i++)
+    factorials[i] = i * factorials[i-1];
+    for (int i = 0; i < ArSize; i++)
+    std::cout << i << "! = " << factorials[i] << std::endl;
+    return 0;
+}
+
+12.Գրել ծրագիր, որը օգտվողին թույլ կտա մուտքագրել թիվ և հաշվել այդ թվի թվանշանների գումարը։
+#include <iostream>
+int main()
+{
+    int number = 0;
+    int digit; 
+    int sum;
+    
+    std::cout << "Enter the number: ";
+    std::cin >> number;
+    
+    while(number > 0){
+        digit = number % 10;
+        sum += digit;
+        number /= 10;
+    }
+    std::cout << "The sum of the digits is: " << sum << std::endl;
+}
+
+13.Գրել ծրագիր, որը օգտվողին թույլ կտա մուտքագրել թիվ և էկրանին տպել մուտքագրված թվի reverse տարբերակը (Օր․՝ 1234 -> 4321)։
+#include <iostream>
+int main()
+{
+    int number;
+    int rev;
+    
+    std::cout << "Enter the number: ";
+    std::cin >> number;
+    
+    while(number){
+        int digit = number % 10;
+        rev = rev * 10 + digit;
+        number /= 10;
+    }
+    std::cout << rev << std::endl;
+}
+
+14.Գրել ծրագիր, որը օգտվողին թույլ կտա մուտքագրել թիվ և պարզել արդյո՞ք թիվը պարզ է, թե ոչ։
