@@ -243,6 +243,57 @@ int main()
     }
     std::cout << "Rverse: " << rev << std::endl;
 }
+14.Գրել ծրագիր, որը օգտվողին թույլ կտա մուտքագրել թիվ և պարզել արդյո՞ք թիվը պարզ է, թե ոչ։
+#include <iostream>
+int main(){
+    int num;
+    bool parz;
+    std::cout << "enter the number: ";
+    std::cin >> num;
+    
+    for (int i = 2; i < num; i++)
+    {
+      if(num % i == 0)
+      {
+          parz = false;
+          break;
+      }
+      else
+          parz = true;
+    }
+    
+    if (parz) {
+        std::cout << num << " is a prime number." << std::endl;
+    } else {
+        std::cout << num << " is not a prime number." << std::endl;
+    }
+}
+
+15.Գրել ծրագիր, որը օգտվողին թույլ կտա մուտքագրել թիվ և պարզել արդյո՞ք թիվը 3֊ի աստիճան է, թե ոչ։
+#include <iostream>
+int main()
+{
+   int num;
+    std::cout << "Enter a number: ";
+    std::cin >> num;
+
+    if (num <= 0) {
+        std::cout << num << " is not a power of 3." << std::endl;
+    } else {
+        while (num % 3 == 0) {
+            num /= 3;
+        }
+        
+        if (num == 1) {
+            std::cout << "The entered number is a power of 3." << std::endl;
+        } else {
+            std::cout << "The entered number is not a power of 3." << std::endl;
+        }
+    }
+
+    return 0;
+
+}
 
 17.Գրել ծրագիր, որը օգտվողին թույլ կտա մուտքագրել 0-ից 7 թվերից որևէ մեկը, և տպել էկրանին մուտքագրված թվին համապատասխանող շաբաթվա օրը։
 #include <iostream>
