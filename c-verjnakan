@@ -1,0 +1,59 @@
+1.Գրեք ծրագիր, որը օգտվողին թույլ կտա մուտքագրել ամբողջ թվային զանգվածի էլեմենտների արժեքները, և տպում է դրանցից առավելագույնի արժեքը:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int size = 0;
+    printf("Enter the array size: ");
+    scanf("%i", &size);
+    int* arr = (int*)calloc(size,sizeof(int));
+    for(int i = 0; i < size; ++i){
+        printf("Enter the array element: ");
+        scanf("%i", &arr[i]);
+    } 
+    
+    int max = arr[0];
+    for(int i = 0; i < size; ++i){
+        if(arr[i] > max){
+            max = arr[i];
+        }
+    }
+    printf("\nMax = %d",max);
+    
+    return 0;
+}
+
+2.Գրեք ծրագիր,  որը օգտվողին թույլ կտա մուտքագրել նույն չափսի, երկու ամբողջ թվային՝ զանգվածների էլեմենտների արժեքները և տպում է՝ համապատասխանող ինդեքսեներով էլեմնետների արտադրյալը էկրանին:
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int size1 = 0;
+    printf("Enter the first array size: ");
+    scanf("%i", &size1);
+    int* arr1 = (int*)calloc(size1,sizeof(int));
+    for(int i = 0; i < size1; ++i){
+        printf("Enter the array element: ");
+        scanf("%i", &arr1[i]);
+    } 
+    
+    int size2 = 0;
+    printf("Enter the second array size: ");
+    scanf("%i", &size2);
+    int* arr2 = (int*)calloc(size2,sizeof(int));
+    for(int i = 0; i < size2; ++i){
+        printf("Enter the array element: ");
+        scanf("%i", &arr2[i]);
+    }
+    
+    for(int i = 0; i < size1; ++i){
+        printf("%d * %d = %d\n",arr1[i],arr2[i], arr1[i] * arr2[i]);
+    }
+    
+    return 0;
+}
+
+11.Օգտվելով դինամիկ հիշողությունից, իրականացնել ֆունկցիա,որը հաշվում և վերադարձնում է քառակուսային մատրիցի օժանդակ անկյունագծի տարրերի գումարը։
