@@ -1,0 +1,79 @@
+1.
+parz tvi chapov dynamic memoryum zangvac vercnel u elementnery lcnel
+#include <iostream>
+
+int isPrime(int a){
+    for (int i = 2; i <= a / 2; ++i){
+        if (a % i == 0){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int main()
+{
+    int x = 2;
+    int y = 0;
+    char ch; 
+    std::cout << "Enter yes or no: ";
+    std::cin >> ch;
+    while(ch == 'y'){
+        for (int i = x; i < 100; ++i){
+            ++x;
+            if(isPrime(i)){
+                std::cout << "i = "<< i << "\n"; 
+                y = i;
+                break;
+            }
+        }
+        int* ptr = new int[y];
+
+        for (int j = 0; j < y; ++j){
+            std::cout << "Enter element: ";
+            std::cin >>  ptr[j];
+        }
+        std::cout << "\nEnter yes or no: ";
+        std::cin >> ch;
+    }
+        std::cout << std::endl;
+}
+
+2. grel cragir structov vory mutqagrum e usanoxi anun azganun ID ev gnahatakan u cacr gnahatakanov usanoxi anuny tpum ekranin.
+#include <iostream>
+#include <cstring>
+
+struct mard{
+    std::string anun;
+    std::string azganun;
+    int id;
+    int mark;
+};
+
+int main(){
+    int member = 0;
+    std::cout << "Enter the students member: ";
+    std::cin >> member;
+
+    mard* m_arr = new mard [member];
+    for(int i = 0; i < member; ++i){
+        std::cout << "Anun: ";
+        std::cin >> m_arr[i].anun;
+        std::cout << "Azganun: ";
+        std::cin >> m_arr[i].azganun;
+        std::cout << "ID number: ";
+        std::cin >> m_arr[i].id;
+        std::cout << "Mark: ";
+        std::cin >> m_arr[i].mark;
+    }
+    for(int i = 0; i < m_arr[i].mark; ++i){
+            if(m_arr[i].mark < 5){
+                std::cout <<"Anun: "<<  m_arr[i].anun
+                << "\nAzganun: " << m_arr[i].azganun
+                << "\nID number: " << m_arr[i].id;
+                std::cout << std::endl;
+            }           
+    }
+
+}
+
