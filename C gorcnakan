@@ -1,43 +1,4 @@
-1. grel cragir structov vory mutqagrum e usanoxi anun azganun ID ev gnahatakan u cacr gnahatakanov usanoxi anuny tpum ekranin.
-#include <iostream>
-#include <cstring>
-
-struct mard{
-    std::string anun;
-    std::string azganun;
-    int id;
-    int mark;
-};
-
-int main(){
-    int member = 0;
-    std::cout << "Enter the students member: ";
-    std::cin >> member;
-
-    mard* m_arr = new mard [member];
-    for(int i = 0; i < member; ++i){
-        std::cout << "Anun: ";
-        std::cin >> m_arr[i].anun;
-        std::cout << "Azganun: ";
-        std::cin >> m_arr[i].azganun;
-        std::cout << "ID number: ";
-        std::cin >> m_arr[i].id;
-        std::cout << "Mark: ";
-        std::cin >> m_arr[i].mark;
-    }
-    for(int i = 0; i < m_arr[i].mark; ++i){
-            if(m_arr[i].mark < 5){
-                std::cout <<"Anun: "<<  m_arr[i].anun
-                << "\nAzganun: " << m_arr[i].azganun
-                << "\nID number: " << m_arr[i].id;
-                std::cout << std::endl;
-            }           
-    }
-
-}
-
-
-2.Բազմապատկեք երկու զանգվածների համապատասխան տարրերը և տպեք արդյունքները:
+1.Բազմապատկեք երկու զանգվածների համապատասխան տարրերը և տպեք արդյունքները:
 #include <stdio.h>
 #include <stdlib.h>
 void scan(int* arr, int size){
@@ -66,7 +27,7 @@ int main()
 }
 
 
-3.Stexcel diynamic matrix ev jnjel 
+2.Stexcel diynamic matrix ev jnjel 
 #include <stdio.h>
 #include <stdlib.h>
 int main()
