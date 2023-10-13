@@ -77,3 +77,43 @@ int main(){
 
 }
 
+3. ogtagorcelov bubble sort grel achman kargov zangvaci tarrery
+#include <iostream>
+int main()
+{
+        int arr[4] = {2, 34, 8, 1};
+        for(int i = 0; i < 4; ++i){
+                for(int j = 0; j < 4 - 1 - i; ++j){
+                        if(arr[j] > arr[j + 1]){
+                                std::swap(arr[j], arr[j + 1]);
+                        }
+                }
+        }
+        for(int i = 0; i < 4; ++i){
+                std::cout << arr[i] << std::endl;
+        }
+}
+4.selection sort
+#include <iostream>
+
+int main()
+{
+	int n = 4;
+	int arr[n] = {7, 45, 5, 3};
+	for(int i = 0; i < n; ++i){
+	int tmp = i;
+		for(int j = i + 1; j < n; ++j){
+			if(arr[j] < arr[tmp]){
+				tmp = j;
+			}
+		}
+	std::swap(arr[i], arr[tmp]);
+	}
+	
+	for(int i = 0; i < 4; ++i){
+		std::cout << arr[i] << " ";
+	}
+
+	std::cout << std::endl;
+
+}
