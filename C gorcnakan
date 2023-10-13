@@ -57,4 +57,40 @@ int main()
     return 0;
 }
 
-4.
+3. recurisve exanakov nermucvac tvery tpel minchev 1y
+#include <stdio.h>
+
+void number(int num){
+	printf("%i ",num);
+	if(num != 1){
+		number(num-1);
+	}
+}
+int main()
+{
+	int num;	
+	printf("the number: ");
+	scanf("%i",&num);
+	number(num);
+	printf("\n");	
+}
+
+4.stexcel recursiv function, vory khashvi n-ic minchev 1 tveri gumary
+#include <stdio.h>
+
+int  number(int num)//5
+{
+	if(num == 1)
+	{
+		return 1;
+	}
+	return num + number(num - 1);
+}
+int main()
+{
+	int num = 0;	
+	printf("the number: ");
+	scanf("%i",&num);
+	printf("%d ",number(num));
+	printf("\n");	
+}
