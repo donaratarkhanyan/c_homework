@@ -1,5 +1,4 @@
-1.
-parz tvi chapov dynamic memoryum zangvac vercnel u elementnery lcnel
+1.parz tvi chapov dynamic memoryum zangvac vercnel y-i depqum  u elementnery lcnel
 #include <iostream>
 
 int isPrime(int a){
@@ -117,3 +116,25 @@ int main()
 	std::cout << std::endl;
 
 }
+5.grel cragir vory kgumari nermucvac tvery aranc + operator ogtagorcelu
+#include <iostream>
+int main()
+{
+	int a = 0;
+	int b = 0;
+	int carry = 0;
+	std::cout << "Enter the first number: ";
+	std::cin >> a;
+	std::cout << "Enter the second number: ";
+	std::cin >> b;
+
+	while(b ^= 0){
+		carry = a & b;
+		a ^= b;
+		b = carry << 1;
+		}
+	std::cout << "sum = " << a;
+	return 0;
+}
+
+6.
