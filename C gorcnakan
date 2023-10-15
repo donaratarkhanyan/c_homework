@@ -3,23 +3,23 @@
 #include <stdlib.h>
 void scan(int* arr, int size){
     for(int i = 0; i < size; ++i){
-    printf(“Enter array element: “);
-    scanf(“%d”,arr + i);
+    printf("Enter array element: ");
+    scanf("%d",arr + i);
     }
 }
 int main()
 {
     int size = 0;
-    printf(“Enter the size: “);
-    scanf(“%d”,&size);
+    printf("Enter the size: ");
+    scanf("%d",&size);
     int* arr = (int*)calloc(size,sizeof(int));
     int* arr1 = (int*)calloc(size, sizeof(int));
-    printf(“Enter frist array!\n”);
+    printf("Enter frist array!\n");
     scan(arr, size);
-    printf(“Enter secnd array!\n”);
+    printf("Enter secnd array!\n");
     scan(arr1, size);
     for(int i = 0; i < size; ++i){
-        printf(“%d * %d = %d\n”,arr[i],arr1[i], arr[i] * arr1[i]);
+        printf("%d * %d = %d\n",arr[i],arr1[i], arr[i] * arr1[i]);
     }
     free(arr);
     free(arr1);
@@ -33,8 +33,8 @@ int main()
 int main()
 {
    int n = 0;
-   printf(“n = “);
-   scanf(“%d”, &n);
+   printf("n = ");
+   scanf("%d", &n);
    int** mat = (int**)calloc(n, sizeof(int*));
    for(int i = 0; i < n; ++i){
       mat[i] = (int*)calloc(n, sizeof(int));
@@ -43,12 +43,12 @@ int main()
        for(int j = 0; j < n; ++j){
            mat[i][j] = rand()%10;
        }
-    }5;
+    }
    for(int i = 0; i < n; ++i){
        for(int j = 0; j < n; ++j){
-           printf(“%d  “,mat[i][j]);
+           printf("%d " ,mat[i][j]);
        }
-       printf(“\n”);
+       printf("\n");
     }
    for(int i = 0; i < n; ++i){
       free(mat[i]);
@@ -93,4 +93,31 @@ int main()
 	scanf("%i",&num);
 	printf("%d ",number(num));
 	printf("\n");	
+}
+5.FUNCTION arajin dynamic arrayi elementnery copy e anum 2rdi mej u avelacnum mnacacy cin arac elementnery, u result anum elementneri artadryaly
+#include <stdio.h>
+#include <stdlib.h>
+void scan(int* arr, int size){
+    for(int i = 0; i < size; ++i){
+    printf("Enter array element: ");
+    scanf("%d",arr + i);
+    }
+}
+int main()
+{
+    int size = 0;
+    printf("Enter the size: ");
+    scanf("%d",&size);
+    int* arr = (int*)calloc(size,sizeof(int));
+    int* arr1 = (int*)calloc(size, sizeof(int));
+    printf("Enter frist array!\n");
+    scan(arr, size);
+    printf("Enter secnd array!\n");
+    scan(arr1, size);
+    for(int i = 0; i < size; ++i){
+        printf("%d * %d = %d\n",arr[i],arr1[i], arr[i] * arr1[i]);
+    }
+    free(arr);
+    free(arr1);
+    return 0;
 }
