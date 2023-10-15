@@ -94,30 +94,3 @@ int main()
 	printf("%d ",number(num));
 	printf("\n");	
 }
-5.FUNCTION arajin dynamic arrayi elementnery copy e anum 2rdi mej u avelacnum mnacacy cin arac elementnery, u result anum elementneri artadryaly
-#include <stdio.h>
-#include <stdlib.h>
-void scan(int* arr, int size){
-    for(int i = 0; i < size; ++i){
-    printf("Enter array element: ");
-    scanf("%d",arr + i);
-    }
-}
-int main()
-{
-    int size = 0;
-    printf("Enter the size: ");
-    scanf("%d",&size);
-    int* arr = (int*)calloc(size,sizeof(int));
-    int* arr1 = (int*)calloc(size, sizeof(int));
-    printf("Enter frist array!\n");
-    scan(arr, size);
-    printf("Enter secnd array!\n");
-    scan(arr1, size);
-    for(int i = 0; i < size; ++i){
-        printf("%d * %d = %d\n",arr[i],arr1[i], arr[i] * arr1[i]);
-    }
-    free(arr);
-    free(arr1);
-    return 0;
-}
