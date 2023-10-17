@@ -175,3 +175,59 @@ int main()
         std::cout << nisher[i] << " ";
     }
 }
+
+8.function tvi factorial
+#include <iostream>
+
+int fact(int val){
+    int ret = 1;
+    while(val > 1){
+        ret *= val--;
+    }
+    return ret;
+}
+
+int main()
+{
+    int j = fact(7); // j equals 120, i.e., the result of fact(5)
+    std::cout << "7! is " << j << std::endl; 
+
+    return 0;
+}
+
+9.factorial recursive
+#include <iostream>
+
+int factorial(int num){
+    if(num == 1){
+        return 1;
+    }
+    return factorial(num - 1) * num;
+}
+int main()
+{
+    int n;
+    std::cout << "enter the number: ";
+    std::cin >> n;
+    std::cout << "Factorial of " << n << " is " << factorial(n) << std::endl;
+    return 0;
+}
+
+10. factorial program
+#include <iostream>
+
+int main()
+{
+    int ar_size = 0;
+    std::cout << "Enter the number: ";
+    std::cin >> ar_size;
+    long factorials[ar_size];
+    factorials[1] = 1l;
+    for(int i = 2; i < ar_size; ++i){
+        factorials[i] = i * factorials[i -1];
+    }
+    for(int i = 1; i < ar_size; ++i){
+        std::cout << i << "! = " << factorials[i] << std::endl;
+    }
+    return 0;
+}
