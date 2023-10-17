@@ -195,3 +195,24 @@ int main() {
 	std::cout << "a = " << a << std::endl;
 	std::cout << "b = " << b << std::endl;
 }
+
+10) arrayi yuraqanchyur element bazmapatkum e 2ov
+#include <iostream>
+
+int main()
+{
+    int arr_size = 5;
+    int arr[arr_size];
+    for (int i = 0; i < arr_size; i++) {
+        std::cout << "enter teh array element: ";
+        std::cin >> arr[i];
+    }
+    
+    for (int i = 0; i < arr_size; i++) {
+        arr[i] *= 2;
+        std::cout << arr[i] << " ";
+    }
+
+    std::cout << std::endl;
+    return 0;
+}
