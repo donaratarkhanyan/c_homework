@@ -31,29 +31,103 @@ int main()
 
 int main()
 {
-    int size1 = 0;
-    printf("Enter the first array size: ");
-    scanf("%i", &size1);
-    int* arr1 = (int*)calloc(size1,sizeof(int));
-    for(int i = 0; i < size1; ++i){
-        printf("Enter the array element: ");
-        scanf("%i", &arr1[i]);
-    } 
-    
-    int size2 = 0;
-    printf("Enter the second array size: ");
-    scanf("%i", &size2);
-    int* arr2 = (int*)calloc(size2,sizeof(int));
-    for(int i = 0; i < size2; ++i){
-        printf("Enter the array element: ");
-        scanf("%i", &arr2[i]);
-    }
-    
-    for(int i = 0; i < size1; ++i){
-        printf("%d * %d = %d\n",arr1[i],arr2[i], arr1[i] * arr2[i]);
-    }
-    
-    return 0;
+	int size1 = 0;
+	printf("Enter the first array size: ");
+	scanf("%i", &size1);
+	int* arr_1 = (int*) calloc (size1, sizeof(int));
+	for(int i = 0; i < size1; ++i){
+		printf("enter the array element: ");
+		scanf("%i", &arr_1[i]);
+	}
+	
+	int size2 = 0;
+        printf("Enter the scond array size: ");
+        scanf("%i", &size2);
+        int* arr_2 = (int*) calloc (size2, sizeof(int));
+        for(int i = 0; i < size2; ++i){
+                printf("enter the array element: ");
+                scanf("%i", &arr_2[i]);
+        }
+
+	for(int i = 0; i < size1; ++i){
+		printf("%i * %i = %i\n", arr_1[i],arr_2[i], arr_1[i] * arr_2[i]);
+
+	}
+
 }
 
-11.Օգտվելով դինամիկ հիշողությունից, իրականացնել ֆունկցիա,որը հաշվում և վերադարձնում է քառակուսային մատրիցի օժանդակ անկյունագծի տարրերի գումարը։
+3.Գրեք ծրագիր, որը օգտվողին թույլ կտա մուտքագրել ամբողջ թվային զանգվածի էլեմենտների արժեքները և տպում է այդ զանգավածի էլեմենտների միջին թվաբանականի արժեքը:
+#include <stdio.h>
+#include <stdlib.h>
+
+int mij(int* arr, int size){
+	int sum = 0;
+	for(int i = 0; i < size; ++i){
+		sum += arr[i];
+	}
+	return sum / size;
+}
+
+int main()
+{
+	int size = 0;
+	printf("Enter the array size: ");
+	scanf("%i", &size);
+	int* arr = (int*) calloc (size, sizeof(int)); 
+	for(int i = 0; i < size; ++i){
+		printf("Enter the array element: ");
+        	scanf("%i", &arr[i]);
+	}
+	
+	printf("%i = mijin tv.\n", mij(arr, size));
+
+	return 0;
+
+}
+
+12.Իրականացրեք մի ֆունկցիա, որը որպես արգումնետ ստանալու է դինամիկ զանգվածների ցուցիչներ, զանգվածների չափերը և միավորում է երկու զանգվածները  նոր ստեղծված դինամիկ զանգվածի մեջ։ Ֆունկցիան վերադարձնելու է նոր ստեղծված զանգվածի հասցեն։
+#include <stdio.h>
+#include <stdlib.h>
+
+void scan(int* arr, int size){
+	for(int i = 0; i < size; ++i){
+		printf("array element: ");
+		scanf("%i", &arr[i]);
+	}
+}
+
+int* new_arr(int* arr1, int size1, int* arr2, int size2){
+	int size3 = size1 + size2;
+	int* resize = (int*) calloc (size3, sizeof(int));
+	for(int i = 0; i < size1; ++i){
+		resize[i] = arr1[i];
+	}
+	int x = 0;
+	for(int i = size1; i < size3; ++i){
+		resize[i] = arr2[x];
+		x++;
+	}
+	return resize;
+}
+int main()
+{
+	int size1 = 0;
+	printf("Enter the first array size: ");
+	scanf("%i", &size1);	
+	int* arr1 = (int*) calloc (size1, sizeof(int));
+	scan(arr1, size1);
+	
+	int size2 = 0;
+	printf("Enter the second array size: ");
+	scanf("%i", &size2);
+        int* arr2 = (int*) calloc (size2, sizeof(int));
+	scan(arr2, size2);
+
+	int size3 = size1 + size2;
+	int* n_arr = new_arr(arr1,size1, arr2, size2);
+	for(int i = 0; i < size3; ++i){
+		printf("%i ",n_arr[i]);
+
+	}
+	return 0;
+}
