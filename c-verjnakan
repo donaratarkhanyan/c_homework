@@ -84,6 +84,48 @@ int main()
 	return 0;
 
 }
+7.Իրականացնել cstring գրադարանային ֆայլի կողմից տրամադրվող  strlen() ֆունկցիային համարժեք ֆունկցիա:
+#include <stdio.h>
+int strlen(char* str){
+    int count;
+    while(*(str + count) != '\0'){
+        ++count;
+    }
+    return count;
+}
+int main()
+{
+    char str[] = "Donara";
+    int size = strlen(str);
+    printf("%d\n", size);
+    return 0;
+}
+8.Իրականացնել cstring գրադարանային ֆայլի կողմից տրամադրվող  strcpy() ֆունկցիային համարժեք ֆունկցիա։
+#include <stdio.h>
+int strlenn(char* str){
+    int count = 0;
+    while(*(str + count) != '\0'){
+        ++count;
+    }
+    return count;
+}
+
+void strcopy(char* des, char* src){
+    int erkar = strlenn(src);
+    for(int i = 0; i < erkar; ++i){
+        des[i] = src[i];
+    }
+    des[erkar] = '\0';
+}
+int main()
+{
+    char str[] = "Donara";
+    char str2[15];
+    strcopy(str2, str);
+    puts(str2);
+    printf("%i\n", strlenn(str));
+    return 0;
+}
 
 12.Իրականացրեք մի ֆունկցիա, որը որպես արգումնետ ստանալու է դինամիկ զանգվածների ցուցիչներ, զանգվածների չափերը և միավորում է երկու զանգվածները  նոր ստեղծված դինամիկ զանգվածի մեջ։ Ֆունկցիան վերադարձնելու է նոր ստեղծված զանգվածի հասցեն։
 #include <stdio.h>
