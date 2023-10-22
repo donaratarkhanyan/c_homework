@@ -108,3 +108,177 @@ int main()
 
     return 0;
 }
+6,Ստեղծեք ստատիկ երկչափ զանգված։ Մուտքագրեք զանգվածի տարրերը։ Գտեք զանգվածի յուրաքանչյուր տողում ամենամեծ տարրը ու այդ տողի բոլոր անդամները ինիցիալիզացրեք այդ արժեքով։ Ստացված զանգվածը տպեք էկրանին։
+//Խնդիրը գրելիս օգտագործել ցուցիչներ
+#include <stdio.h>
+
+void max_row(int mat[][4], int row, int col);
+void scan(int mat[][4], int row, int col);
+void print(int mat[][4], int row, int col);
+
+int main()
+{
+    const int row = 3;
+    const int col = 4;
+    int mat[row][col];
+    scan(mat, row, col);
+    print(mat, row, col);
+    
+    for(int i = 0; i < row; ++i){
+       max_row(mat, i, col);
+    }
+    
+    print(mat, row, col);
+    return 0;
+}
+
+void scan(int mat[][4], int row, int col){
+    printf("Enter elements of the %d x %d matrix:\n", row, col);
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            scanf("%d", &mat[i][j]);
+        }
+    }
+}
+
+void print(int mat[][4], int row, int col){
+    printf("MATRIX: \n");
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+void max_row(int mat[][4], int row, int col){
+    int max = mat[row][0];
+    for(int i = 0; i < col; ++i){
+        if(max < mat[row][i]){
+            max = mat[row][i];
+        }
+    }
+    for(int i = 0; i < col; ++i){
+        mat[row][i] = max;
+    }
+}
+
+3.Ստեղծել Person ստրուկտուրա, որը անձի մասին կպահի տվյալներ ([char տիպի զանգված]անուն, [char տիպի զանգված]ազգանուն, [int]տարիք և ծննդյան ամիս ամսաթիվ): Ծննդյան ամիս ամսաթիվը արտհայտել Date անունով ստրուկտուրայի միջոցով ստրուկտուրայի միջոցով ([int]օր, [int]ամիս և [int]տարի)։
+Հիմնվելով նախորդ խնդրում սհամանված Person ստրուկտուրայի վրա ստեղծել Person տիպի դինամիկ զանգված։ Գրել ֆունկցիա, որը կարժեքավորի զանգվածի էլեմենտները մասնավորապես օբյեկտի անունը, ազգանունը, և ծննդյան ամիս ամսաթվի օբյեկտը։
+Գրել ֆունկցիա որը գտնում է զանգվածի մեջից տարիքով ամենամեծին և վերադարձնում է  օբյեկտը։ Տպել էկրանին վերադարձված օբյետի տվյալները։
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct Person Person;
+typedef struct Date Date;
+
+struct Date{
+    unsigned int day;
+    unsigned int month;
+    unsigned int year;
+};
+
+struct Person{
+    char name[20];
+    char sname[20];
+    struct Date age;
+};
+
+void mard(Person* p_arr, int size){
+    for(int i = 0; i < size; ++i){
+        printf("\nEter name: ");
+        scanf("%s", p_arr[i].name);
+        printf("Enter lastnem: ");
+        scanf("%s", p_arr[i].sname);
+        printf("Enter day: ");
+        scanf("%d", &p_arr[i].age.day);
+        printf("Enter munth: ");
+        scanf("%d", &p_arr[i].age.month);
+        printf("Enter year: ");
+        scanf("%d", &p_arr[i].age.year);
+    }
+}
+
+void min_age(Person* p_arr, int size){
+    int x = 0;
+    int min = p_arr[0].age.year;
+    for(int i = 0; i < size; ++i){
+        if(min >  p_arr[i].age.year){
+            min = p_arr[i].age.year;
+            x = i;
+        }
+    }
+    printf("\mena mec mardy: ");
+    printf("\nname: %s\nsname: %s\nday: %i\nmonth: %i\nyear: %i\n", p_arr[x].name, p_arr[x].sname, p_arr[x].age.day, p_arr[x].age.month, p_arr[x].age.year);
+}
+int main()
+{
+    int size = 0;
+    printf("Enter the person count: ");
+    scanf("%i", &size);
+    Person* p_arr = (Person*) calloc (size, sizeof(Person));
+    mard(p_arr, size);
+    min_age(p_arr,size);
+    free(p_arr);
+}
+
+1.Ստեղծեք Book անունով ստրուկտուրա, որը պարունակում է տեղեկատվություն գրքի մասին՝ ներառյալ նրա անվանումը (char array), հեղինակը (char array) և հրատարակման տարեթիվը (int):
+Գրեք ֆունկցիա, որը մուտքագրում է  որը կարժեքավորի զանգվածի էլեմենտները մասնավորապես օբյեկտի անունը, հեղինակի անունը և հրատարակման տարեթիվը։ 
+Գրեք ֆունկցիա, որը ստանում է արժեքավորված struct-երի զանգված և գտնում է  այն գրքերի անունները որոնք սկսվում են ‘A’-ով։
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Book{
+	char name[40];
+	char hex[40];
+	int h_tiv;
+};
+
+typedef struct Book Book;
+
+void initBooks(Book *ptr, unsigned int size);
+void startsWith(Book *ptr, unsigned int size, char letter);
+
+int main()
+{
+	int size = 0;
+	printf("Enter the array size: ");
+	scanf("%d", &size);
+	Book* arr_b = (Book*) calloc (size, sizeof(Book*));
+	initBooks(arr_b, size);
+    	startsWith(arr_b, size, 'A');
+	free(arr_b);	
+}
+
+void initBooks(Book *ptr, unsigned int size)
+{
+        for(int i = 0; i < size; ++i){
+                printf("Enter the name: ");
+                scanf("%s", ptr[i].name);
+                printf("Enter the author: ");
+                scanf("%s", ptr[i].hex);
+                printf("Year of publication: ");
+                scanf("%i", &ptr->h_tiv);
+
+        }
+}
+
+void startsWith(Book *ptr, unsigned int size, char letter)
+{
+    for (int i = 0; i < size; ++i)
+    {
+        if (ptr[i].name[0] == letter)
+        {
+            printf("%s", ptr[i].name);
+        }
+    }
+    printf("\n");
+}
+
+2.Ստեղծեք «Car» անունով ստրուկտուրա, որը պարունակում է տեղեկատվություն մեքենայի մասին, ներառյալ դրա ապրանքանիշը (char array), մոդելը (char array) և արտադրության տարեթիվը (int):
+Գրել ֆունկցիա, որը կարժեքավորի օբլեկտի էլեմենտները մասնավորապես մեքենայի ապրանքանիշը, մոդելը և  արտադրության տարեթիվը։
+Իրականացնել ֆունկցիա, որը ստանում է Car[]-երի զանգված, և վերադարձնում այն մեքենայի արտադրման տարեթիվը, երի ապրանքանիշը  “Mercedes” է։
