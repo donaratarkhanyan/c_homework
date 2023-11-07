@@ -1,0 +1,276 @@
+1: Array Sum
+Write a program that calculates and prints the sum of all elements in a given integer array.
+
+#include <iostream>
+void scan(int*, int);
+void print(int*, int);
+int sum(int*, int);
+
+int main()
+{
+	int size = 0;
+	std::cout << "Enter the array size: ";
+	std::cin >> size;
+	int* arr = new int[size];
+	std::cout << " Array elements: ";
+	scan(arr, size);
+	print(arr, size);
+	int x = sum(arr, size);
+	std::cout <<"Elements sum = " << x << std::endl;
+
+	return 0;
+}
+void scan(int* arr, int size){
+	for(int i = 0; i < size; ++i){
+		arr[i] = rand()%10;
+	}
+}
+
+void print(int* arr, int size){
+	for(int i = 0; i < size; ++i){
+		std::cout << arr[i] << " ";
+	}
+	std::cout << std::endl;
+}
+
+int sum(int* arr, int size){
+	int sum = 0;
+	for(int i = 0; i < size; ++i){
+		sum += arr[i];
+	}
+	return sum;
+}
+
+2: Array Average
+Create a program that calculates and prints the average (mean) of the elements in a given integer array.
+
+#include <iostream>
+void scan(int*, int);
+void print(int*, int);
+int avg(int*, int);
+
+int main()
+{
+	int size = 0;
+	std::cout << "Enter the array size: ";
+	std::cin >> size;
+	int* arr = new int[size];
+	std::cout << " Array elements: ";
+	scan(arr, size);
+	print(arr, size);
+	int x = avg(arr, size);
+	std::cout <<"Elements average = " << x << std::endl;
+
+	return 0;
+}
+void scan(int* arr, int size){
+	for(int i = 0; i < size; ++i){
+		arr[i] = rand()%10;
+	}
+}
+
+void print(int* arr, int size){
+	for(int i = 0; i < size; ++i){
+		std::cout << arr[i] << " ";
+	}
+	std::cout << std::endl;
+}
+
+int avg(int* arr, int size){
+	int sum = 0;
+	int avg = 0;
+	for(int i = 0; i < size; ++i){
+		sum += arr[i];
+		avg = sum / size;
+	}
+	return avg;
+}
+
+3: Array Maximum Value
+Write a program that finds and prints the maximum value in an integer array.
+
+#include <iostream>
+void scan(int*, int);
+void print(int*, int);
+int max(int*, int);
+
+int main()
+{
+	int size = 0;
+	std::cout << "Enter the array size: ";
+	std::cin >> size;
+	int* arr = new int[size];
+	std::cout << " Array elements: ";
+	scan(arr, size);
+	print(arr, size);
+	int x = max(arr, size);
+	std::cout <<"Array max = " << x << std::endl;
+
+	return 0;
+}
+void scan(int* arr, int size){
+	for(int i = 0; i < size; ++i){
+		arr[i] = rand()%10;
+	}
+}
+
+void print(int* arr, int size){
+	for(int i = 0; i < size; ++i){
+		std::cout << arr[i] << " ";
+	}
+	std::cout << std::endl;
+}
+
+int max(int* arr, int size){
+	int max = arr[0];
+	for(int i = 0; i < size; ++i){
+		if(arr[i] > max){
+			max = arr[i];
+		}
+	}
+	return max;
+}
+
+4: Array Minimum Value
+Develop a program that finds and prints the minimum value in an integer array.
+
+#include <iostream>
+void scan(int*, int);
+void print(int*, int);
+int min(int*, int);
+
+int main()
+{
+	int size = 0;
+	std::cout << "Enter the array size: ";
+	std::cin >> size;
+	int* arr = new int[size];
+	std::cout << " Array elements: ";
+	scan(arr, size);
+	print(arr, size);
+	int x = min(arr, size);
+	std::cout <<"Array min = " << x << std::endl;
+
+	return 0;
+}
+void scan(int* arr, int size){
+	for(int i = 0; i < size; ++i){
+		arr[i] = rand()%10;
+	}
+}
+
+void print(int* arr, int size){
+	for(int i = 0; i < size; ++i){
+		std::cout << arr[i] << " ";
+	}
+	std::cout << std::endl;
+}
+
+int min(int* arr, int size){
+	int min = arr[0];
+	for(int i = 0; i < size; ++i){
+		if(arr[i] < min){
+			min = arr[i];
+		}
+	}
+	return min;
+}
+
+5: Array Search
+Implement a program that searches for a specific integer value in an array. If the value is found, print its index; otherwise, indicate that the value is not in the array.
+
+#include <iostream>
+void scan(int*, int);
+void print(int*, int);
+void find(int*, int, int);
+
+int main()
+{
+	int size = 0;
+	std::cout << "Enter the array size: ";
+	std::cin >> size;
+	int* arr = new int [size];
+	scan(arr, size);
+	print(arr, size);
+	int num = 0;
+	std::cout << "Enter the number that you want to search for: ";
+	std::cin >> num;
+	find(arr, size, num);
+	
+	return 0;
+
+}
+
+void scan(int* arr, int size){
+	for(int i = 0; i < size; ++i){
+		arr[i] = rand()%10;
+	}
+}
+
+void print(int* arr, int size){
+	for(int i = 0; i < size; ++i){
+		std::cout << arr[i] << " ";
+	}
+	std::cout << std::endl;
+}
+
+void find(int* arr, int size, int x){
+	bool b;
+	for(int i = 0; i < size; ++i){
+		if(arr[i] == x){
+			std::cout << "Number " << x << " found at index " << i << std::endl;
+            	b = true;
+        	}
+    	}
+
+   	if (!b) {
+        	std::cout << "Number " << x << " not found in the array." << std::endl;
+	}
+}
+
+6: Array Sorting
+Write a program that sorts the elements of an integer array in ascending order using a common sorting algorithm selection sort. Print the sorted array.
+#include <iostream>
+void scan(int*, int);
+void print(int*, int);
+void selection(int*, int);
+
+int main()
+{
+	int size = 0;
+	std::cout << "Enter the array size: ";
+	std::cin >> size;
+	int* arr = new int [size];
+	scan(arr, size);
+	print(arr, size);
+	selection(arr, size);
+	print(arr, size);	
+
+	return 0;
+}
+
+void scan(int* arr, int size){
+	for(int i = 0; i < size; i++){
+		arr[i] = rand()%10;
+	}
+}
+
+void print(int* arr, int size){
+	for(int i = 0; i < size; ++i){
+		std::cout << arr[i] << " ";
+	}
+	std::cout << std::endl;
+}
+
+void selection(int* arr, int size){
+	for(int i = 0; i < size; ++i){
+		for(int j = i + 1; j < size; ++j){
+			if(arr[i] < arr[j]){
+				std::swap(arr[i], arr[j]);
+			}
+		}
+	}
+}
+
+7:Array Reversal
+Create a program that reverses the elements of an integer array and prints the reversed array.
