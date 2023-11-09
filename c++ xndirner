@@ -498,5 +498,4 @@ if(palid_num(number)){
 }else{
 	std::cout << number << " not palindrome!\n";
 }
-
 }
