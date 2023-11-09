@@ -417,3 +417,49 @@ int max_second(int* arr, int size){
  } 
  return max_2; 
 }
+13: grel cragir resurcive function ev function pointerov vor dynamic array-i amen elementi hamar kkanchi function ev elementy increment kani;
+#include <iostream>
+void scan(int*, int);
+void print(int*, int);
+void foo(int*, int, void(*)(int&));
+void inc(int&);
+
+int main()
+{
+    int size = 0; 
+    std::cout << "Enter the array size: ";
+    std::cin >> size;
+    int* arr = new int[size];
+    scan(arr, size);
+    print(arr, size);
+    foo(arr, size, inc);
+    std::cout << "New array! "<< std::endl;
+    print(arr, size);
+    
+    return 0;
+}
+
+void scan(int* arr, int size){
+    for(int i = 0; i < size; ++i){
+        arr[i] = rand()%10;
+    }
+}
+
+void print(int* arr, int size){
+    for(int i = 0; i < size; ++i){
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+void foo(int* arr, int size, void(*f)(int&)){
+    if(size < 0){
+        return;
+    }
+    f(arr[size]);
+    foo(arr, size - 1, inc);
+}
+
+void inc(int& x){
+    ++x;
+}
