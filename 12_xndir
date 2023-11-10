@@ -463,3 +463,107 @@ void foo(int* arr, int size, void(*f)(int&)){
 void inc(int& x){
     ++x;
 }
+
+14:Recursive Binary Search
+#include <iostream>
+int b_search(int* arr, int a, int l, int r){
+    if(l > r){
+        return -1;
+    }
+    std::cout << arr[l] << " " << arr[r] << std::endl;
+    int mid = l + (r - l) / 2;
+    if(arr[mid] == a){
+        return mid;
+    }
+    else if(arr[mid] > a){
+        return b_search(arr, a, l, mid - 1);
+    }
+    else{
+        return b_search(arr, a, mid + 1, r);
+    }
+}
+int main()
+{
+    const int size = 7;
+    int arr[size] = {2, 3, 5, 6, 7, 8, 9};
+    int l = 0;
+    int r = size - 1;
+    int index = b_search(arr, 3, l, r);
+    std::cout << index;
+    return 0;
+}
+
+15:Matrix Subtraction
+Create a program similar to Problem 1 but for matrix subtraction instead of addition.
+
+#include <iostream>
+void sub_mats(int mat1[][3], int mat2[][3], int result[][3], int size) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            result[i][j] = mat1[i][j] - mat2[i][j];
+        }
+    }
+}
+int main()
+{
+    const int size = 3;
+    int mat1[size][size] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int mat2[size][size] = {{9, 8, 7}, {6, 5, 4}, {3, 2, 1}};
+    int result[size][size];
+    
+    sub_mats(mat1, mat2, result, size);
+    
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            std::cout << result[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+    
+    return 0;
+}
+15: Matrix Transposition
+Develop a program that transposes a given matrix. Transposing a matrix means swapping rows with columns. Prompt the user to enter a matrix, transpose it, and print the transposed matrix.
+#include <iostream>
+
+void new_Matrix(int mat[][3], int new_Mat[][3], int size) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+           new_Mat[j][i] = mat[i][j];
+        }
+    }
+}
+int main() {
+    const int size = 3;
+    int mat[size][size];
+    int new_Mat[size][size];
+
+    std::cout << "Enter the elements of the matrix:" << std::endl;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            std::cout << "Enter element at position (" << i << ", " << j << "): ";
+            std::cin >> mat[i][j];
+        }
+    }std::cout << std::endl;
+    
+    std::cout << "MATRIX!!!! " << std::endl;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            std::cout << mat[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+    new_Matrix(mat, new_Mat, size);
+    std::cout << "Transposed matrix:" << std::endl;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            std::cout << new_Mat[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+	return 0;
+}
+
+16:
