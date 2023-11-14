@@ -1,0 +1,170 @@
+1) Array MAX
+#include <iostream>
+
+int main()
+{
+    int arr[100];
+    int size = 0;
+
+    do {
+        std::cout << "enter the array size: ";
+        std::cin >> size;
+    } while (size < 1 || size > 100);
+    
+    for (int i = 0; i < size; ++i) {
+        std::cout << "Enter the array elemnets: ";
+        std::cin >> arr[i];
+    }
+    
+    int max = arr[0];
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    std::cout << max;
+    return 0;
+}
+
+2)Array MIN
+#include <iostream>
+
+int main()
+{
+    int arr[100];
+    int size = 0;
+
+    do {
+        std::cout << "enter the array size: ";
+        std::cin >> size;
+    } while (size < 1 || size > 100);
+    
+    for (int i = 0; i < size; ++i) {
+        std::cout << "Enter the array elemnets: ";
+        std::cin >> arr[i];
+    }
+    
+    int min = arr[0];
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] < min){
+            min = arr[i];
+        }
+    }
+    std::cout << min;
+    return 0;
+}
+
+3) array-i MIN u MAX mijin tvabanakan
+#include <iostream>
+
+int main()
+{
+    int arr[100];
+    int size = 0;
+
+    do {
+        std::cout << "enter the array size: ";
+        std::cin >> size;
+    } while (size < 1 || size > 100);
+    
+    for (int i = 0; i < size; ++i){
+        std::cout << "Enter the array elemnets: ";
+        std::cin >> arr[i];
+    }
+    
+    int max = arr[0];
+    int min = arr[0];
+    for (int i = 0; i < size; ++i){
+        if (arr[i] < min) {
+            min = arr[i];
+        } else if (arr[i] > max){
+            max = arr[i];
+        }
+    }
+    double result = (double)(max + min) / 2;// double result stanalu hamar petq e cast anel doublei
+    std::cout << "mijin tvabanakany = " << result;
+    return 0;
+}
+
+4)array-i yur. tary  bajanel size-i vra (henc zangvaci mej)
+#include <iostream>
+
+int main()
+{
+    double arr[100];
+    int size = 0;
+
+    do{
+        std::cout << "enter the array size: ";
+        std::cin >> size;
+    }while(size < 1 || size > 100);
+    
+    for(int i = 0; i < size; ++i){
+        std::cout << "Enter the array elemnets: ";
+        std::cin >> arr[i];
+    }
+    
+    for (int i = 0; i < size; ++i) {
+        arr[i] /= size;
+        std::cout << arr[i] << " ";
+    }
+    return 0;
+}
+
+5)2 zangvaci nuyn index tarrery bazmapetkel
+#include <iostream>
+
+int main()
+{
+    const int size = 3;
+    int arr1[size];
+    int arr2[size];
+    
+    for(int i = 0; i < size; ++i){
+        std::cout << "Enter the first array elemnets: ";
+        std::cin >> arr1[i];
+    }
+    for(int i = 0; i < size; ++i){
+        std::cout << "Enter the second array elemnets: ";
+        std::cin >> arr2[i];
+    }
+    
+    for (int i = 0; i < size; ++i) {
+        std::cout << "mul = " << arr1[i] * arr2[i] << std::endl;
+    }
+    
+    return 0;
+}
+6) CHAR arrayi (string) toxic heracnum enq tvery
+#include <iostream>
+int main()
+{
+    char str[] = "shd5252fgx";
+    
+    int j = 0;// nayum e arajin tarin i-n el e nayum arajin tarin ete amen handipox tarry tar e j++ enq anum 
+    for (int i = 0; str[i]; ++i){ // str[i] != '\0'; '\0'-n = e 0; 0n boolean falsen e aysinqn str[i] = 0 nuyn str[i]
+        if ((str[i] >= 'a' && str[j] <= 'z')||(str[i] <= 'A' && str[i] >= 'Z')){
+            str[j] = str[i];
+            ++j;
+        }
+    }
+    str[j] = '\0';
+    std::cout << str;
+    
+    return 0;
+}
+
+7) Chareri zangvacy(string) poqratarery dardznel mecatar
+#include <iostream>
+int main()
+{
+    char str[] = "shdfgx";
+    for (int i = 0; str[i]; ++i){ // str[i] != '\0'; '\0'-n = e 0; 0n boolean falsen e aysinqn str[i] = 0 nuyn str[i]
+        if (str[i] >= 'a' && str[i] <= 'z'){
+            str[i] -= 32;
+        }
+    }
+    std::cout << str;
+    
+    return 0;
+}
