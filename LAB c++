@@ -437,3 +437,170 @@ int* remove_index(int* arr, int size, int index) {
     arr_new  = nullptr;
     return arr;
 }
+16)Գրել ծրագիր, որը կտպի զանգվածի կենտ էլեմենտների քանակը։
+#include <iostream>
+
+int main(){
+    const int size = 7;
+    int arr[size] = {1, 4, 6, 5, 2, 1, 9};
+    int count;
+    for(int i = 0; i < size; ++i){
+        if(arr[i] % 2 != 0){
+            ++count;
+        }
+    }
+    std::cout << count;
+}
+
+17)Գրել ծրագիր, որ տողում փոքրատառերը կդասավորի զանգվածի սկզբում մեծատառերը վերջում;
+#include <iostream>
+
+int is_upper(char c){
+    return (c >= 'A' && c <= 'Z');
+}
+
+int is_lower(char c){
+    return (c >= 'a' && c <= 'z');
+}
+int main()
+{
+    char str[20];
+    std::cout << "enter the string: ";
+    std::cin >> str;
+    int j = 0; 
+    while(!is_upper(str[j])){
+        ++j;
+    }
+    for(int i = j + 1; str[i]; ++i){
+        if(is_lower(str[i])){
+            std::swap(str[i], str[j]);
+            while(!is_upper(str[j])){
+                ++j;
+            }
+        }
+    }
+    
+    std::cout << str;
+    return 0;
+}
+18)Գրեք ծրագիր, որը օգտվողին թույլ կտա մուտքագրել char-երի զանգված և հեռացնում է կրկնվող նիշերը տողից:
+#include <iostream> 
+ 
+int len(char* str){ 
+    int l = 0; 
+    while(str[l]){ 
+        ++l; 
+    } 
+    return l; 
+} 
+ 
+int main() 
+{ 
+    char str[40]; 
+    std::cout << "enter the string: "; 
+    std::cin >> str; 
+    int size = len(str); 
+    for(int i = 0; i < size; ++i){ 
+        bool repeat = false; 
+        for(int j = i + 1; j < size; ++j){ 
+            if(str[j] == str[i]){ 
+                str[j] = '\0'; 
+                repeat = true; 
+            } 
+        } 
+        if(repeat){ 
+            str[i] = '\0'; 
+        } 
+    } 
+ 
+    int j = 0;// nayum e arajin tarin i-n el e nayum arajin tarin ete amen handipox tarry tar e j++ enq anum  
+    for (int i = 0; i < size; ++i){  
+        if (str[i]){ 
+            str[j] = str[i]; 
+            ++j; 
+        } 
+    } 
+    str[j] = '\0'; 
+    std::cout << str; 
+    return 0; 
+}
+
+19)Գրեք ծրագիր, որը օգտվողին թույլ կտա մուտքագրել ամբողջ թվային զանգվածի էլեմենտների արժեքները և  կգտնի զանգվածի ամենամեծ և ամենափոքր տարրերի ինդեքսների տարբերությունը:
+#include <iostream>
+
+int main()
+{
+    int arr[100];
+    int size = 0;
+
+    do {
+        std::cout << "enter the array size: ";
+        std::cin >> size;
+    } while (size < 1 || size > 100);
+    
+    for (int i = 0; i < size; ++i){
+        std::cout << "Enter the array elemnets: ";
+        std::cin >> arr[i];
+    }
+    
+    int max = arr[0];
+    int min = arr[0];
+    for (int i = 0; i < size; ++i){
+        if (arr[i] < min) {
+            min = arr[i];
+        } else if (arr[i] > max){
+            max = arr[i];
+        }
+    }
+    int result = max - min;
+    std::cout << "max - min = " << result;
+    return 0;
+}
+20)Գրել ծրագիր, որը լեքսիկոգրաֆիկական կհամեմատի երկու զանգվածներ։
+#include <iostream>
+int compare(int* arr_1, int s1, int* arr_2, int s2){
+    if(s1 > s2)
+        return 1;
+    if(s1 < s2)
+        return -1;
+    for(int i = 0; i < s1; ++i){
+        if(arr_1[i] > arr_2[i])
+            return 1;
+        
+        if(arr_1[i] < arr_2[i])
+            return -1;
+    }
+    return 0;
+}
+int main(){
+    
+    int arr_1[100];
+    int s1 = 0;
+
+    do {
+        std::cout << "enter the first array size: ";
+        std::cin >> s1;
+    } while (s1 < 1 || s1 > 100);
+    
+    for (int i = 0; i < s1; ++i){
+        std::cout << "Enter the array elemnets: ";
+        std::cin >> arr_1[i];
+    }
+    
+    int arr_2[100];
+    int s2 = 0;
+
+    do {
+        std::cout << "enter the array size: ";
+        std::cin >> s2;
+    } while (s2 < 1 || s2 > 100);
+    
+    for (int i = 0; i < s2; ++i){
+        std::cout << "Enter the second array elemnets: ";
+        std::cin >> arr_2[i];
+    }
+    int x = compare(arr_1, s1, arr_2, s2);
+    std::cout << x;
+}
+
+21)Գրեք ծրագիր, որը ամբողջ թվային զանգվածի բոլոր զույգ էլեմենտները  նույն զանգվածի մեջ՝ կտեղավորի զանգվածի սկզբից, իսկ կենտերը վերջից:
