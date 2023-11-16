@@ -604,3 +604,76 @@ int main(){
 }
 
 21)Գրեք ծրագիր, որը ամբողջ թվային զանգվածի բոլոր զույգ էլեմենտները  նույն զանգվածի մեջ՝ կտեղավորի զանգվածի սկզբից, իսկ կենտերը վերջից:
+#include <iostream>  
+  
+int zuyg(int x){  
+        return (x % 2 == 0);  
+ 
+}  
+  
+int main(){  
+      
+    int arr[100];  
+    int size = 0;  
+  
+    do {  
+        std::cout << "enter the array size: ";  
+        std::cin >> size;  
+    } while (size < 1 || size > 100);  
+      
+    for (int i = 0; i < size; ++i){  
+        std::cout << "Enter the array elemnets: ";  
+        std::cin >> arr[i];  
+    }  
+      
+    int j = 0;   
+    while(!zuyg(arr[j])){  
+        ++j;  
+    }  
+    for(int i = j + 1; i < size; ++i){  
+        if(!zuyg(arr[i])){  
+            std::swap(arr[i], arr[j]);  
+            while(!zuyg(arr[j])){  
+            ++j;  
+            }  
+        }  
+    }  
+      
+    for(int i = 0; i < size; ++i){  
+        std::cout << arr[i] << " ";  
+    }  
+}
+
+22)Իրականացնել ֆունկցիա, որը ստանում է ամբողջ թվային պարամետր և վերադարձնում է n-րդ Ֆիբոնաչիի թիվը։
+#include <iostream>
+
+int fib(int num){
+    if(num <= 1){
+        return num;
+    }
+    int a = 0;
+    int b = 1;
+    int c = 0;
+    for(int i = 2; i <= num; ++i){
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    return c;
+}
+
+int main()
+{
+    int x = 0;
+    std::cout << "enter the index: ";
+    std::cin >> x;
+    std::cout << fib(x);
+    return 0;
+}
+
+23)Table of a Number: Գրել ֆունկցիա, որը կտպի տրված թվի բազմապատկման աղյուսակը։
+
+24)Գրել տրված թվի ֆակտորիալը հաշվող իտերատիվ ֆունկցիա։
+
+25)Իրականացնել ֆունկցիա, որը ստուգում է՝ թիվը պարզ է, թե ո։ Պարզ է համարվում այն թիվը, որը առանց մնացորդ կարող է բաժանվել ինքը իր վրա և մեկի վրա (մեկը պարզ թիվ չէ)։
+
