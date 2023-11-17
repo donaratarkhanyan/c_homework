@@ -940,3 +940,54 @@ int main(){
         std::cout << std::endl;
     }
 }
+12)Ստեղծել sym անունով char տիպի փոփոխական։ Գրել ծրագիր, որն օգտագործելու թույլ կտա մուտքագրել sym անվան փոփոխական արժեք, որը լինելու է լատինական այբուբենի մեծատառ։ Տպել էկրանին մուտքագրված տառին համապատասխանող փոքրատառը։
+#include <iostream>
+
+int main(){
+    char sym;
+    do{
+        std::cout << "enter the latter: ";
+        std::cin >> sym;
+    }while(sym <= 'A' || sym >= 'Z');
+    
+    if(sym){
+        sym += 32;
+    }
+    std::cout << sym;
+    
+}
+
+13)Ստեղծել sym անունով char տիպի փոփոխական։ Գրել ծրագիր, որը օգտվողին թույլ կտա մուտքագրել sym անունով փոփոխականի արժեքը։ Տպել էկրանին true եթե մուտքագրված սիմվոլը թվանշան է հակառակ դեպքում տպել false:
+#include <iostream>
+
+int main(){
+    char sym;
+    std::cout << "enter the symbol: ";
+    std::cin >> sym;
+        if(sym <= '0' || sym >= '9'){
+            std::cout << "false!";
+        }
+        else{
+            std::cout<< "true!";
+        }
+}
+14)Գրել ծրագիր, որը օգտվողին թույլ կտա մուտքագրել երկու սիմվոլները, ստուգեք արդյոք սիմվոլները արտահայտում են նույն տառի մեծատառ և փոքրատառ տեսքերը, թե ոչ։
+#include <iostream>
+
+int main(){
+    char sym1;
+    std::cout << "enter the first symbol: ";
+    std::cin >> sym1;
+    
+    char sym2;
+    std::cout << "enter the second symbol: ";
+    std::cin >> sym2;
+    
+    if(sym1 == sym2 || sym1 + 32 == sym2 || sym1 == sym2 + 32){
+        std::cout << "havasar en!";
+    }else{
+        std::cout << "havasar chen!!";
+    }
+}
+
+15)
