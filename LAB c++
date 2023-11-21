@@ -805,3 +805,308 @@ int main(){
     std::cout << foo(n);
 }
 
+27)Գրել ռեկուրսիվ ֆունկցիա, որը ստանում է n բնական թիվ և տպում է n-ից 0 թվերը։
+#include <iostream>
+
+void print(int n){
+    if(n == 0){
+        std::cout << 0; 
+        return;
+    }
+    
+    std::cout << n << " ";
+    int k = n > 0 ? 1 : -1;
+    print(n - k);
+    
+}
+
+int main(){
+    int x = 0;
+    std::cin >> x;
+    print(x);
+}
+
+28)Գրել ռեկուրսիվ ֆունկցիա, որը ստանում է n բնական թիվ և տպում է 0-ից n թվերը։
+#include <iostream>
+
+void print(int n){
+    if(n == 0){
+        std::cout << 0 << " "; 
+        return;
+    }
+    
+    int k = n > 0 ? 1 : -1;
+    print(n - k);
+    std::cout << n << " ";
+}
+
+int main(){
+    int x = 0;
+    std::cin >> x;
+    print(x);
+}
+
+29)Գրել ռեկուրսիվ ֆունկցիա, որը ստանում է ամբողջ թվային զանգված և տպում է զանգվածի էլեմենտները էկրանին։
+#include <iostream>
+void print_arr(int* arr, int size){
+    if(size == 0){
+        return;
+    }
+    std::cout << *arr;
+    print_arr(arr + 1, size - 1);
+}
+
+
+int main(){
+    const int size = 6;
+    int arr[6] = {1, 2, 3, 4, 5, 6};
+    print_arr(arr, size);
+}
+
+30)Իրականացնել ռեկուրսիվ ֆունկցիա, որն ընդունում է թիվ և վերադարձնում նրա թվանշանների գումարը:
+#include <iostream>
+int sum(int n){
+   if(n == 0){
+       return 0;
+   }
+   return n % 10 + sum(n / 10);
+}
+int main(){
+    int num = 0; 
+    std::cin >> num;
+    int x = sum(num);
+    std::cout << x;
+}
+
+31)Իրականացնել ռեկուրսիվ ֆունկցիա, որը հաշվում է երկու թվերի ամենամեծ ընդհանուր բաժանարարը։
+#include <iostream>
+
+int  gcd(int a, int b){
+    if(b == 0){
+        return a;
+    }
+    
+    return gcd(b, a % b);
+}    
+int main(){
+    std::cout << gcd(18, 24);
+    return 0;
+}
+
+32)Իրականացնել int տիպի արժեք վերադարձնող ֆունկցիա, որը վերադարձնում է՝ 1, եթե ֆունկցային փոխանցված ամբողջ թիվը կարող է արտահայտվել երկու պարզ թվերի գումարով, հակառակ դեպքում ֆունկցիան կվերադարձնի՝ 0:
+#include <iostream>
+bool is_prime(int n){
+    if (n <= 1){
+        return 0;
+    } 
+    for(int i = 2; i*i <= n; ++i){
+        if (n%i == 0){
+            return 0;
+        }
+    }
+    return 1;
+}
+int foo(int n){
+    if (n < 4){
+        return 0;
+    }
+    for(int i = 2; i <= n / 2; ++i){
+        if(is_prime(i) && is_prime(n - i)){
+            return 1;
+        }
+    }
+    return 0;
+}
+int main(){
+    int n = 0; 
+    std::cout << "Number: ";
+    std::cin >> n;
+    std::cout << foo(n);
+}
+
+33)Իրականացնել բինար որոնման ալգորիթմը զանգվածի համար իտերատիվ տարբերակով։
+#include <iosream>
+int search(int* arr, int size, int target){
+    int l = 0;
+    int r = size - 1;
+    while(l <= r){
+        int mid = l + (r - l) / 2;
+        if(arr[mid] == target){
+            return mid;
+        }
+        if(arr[mid] > target){
+            r = mid - 1;
+        }else{
+            l = mid + 1;
+        }
+    }
+    return -1;
+}
+
+int main(){
+    const int size = 5;
+    int arr[size] = {1,3,5,7,8};
+    int target = 0; 
+    std::cout << "Enter the target element: ";
+    std::cin >> target;
+    std::cout << search(arr, size, target);
+}
+
+34)Իրականացնել ֆունկցիա, որը ունի հետևյալ նախատիպը (prototype)int power (int num, int exp); Ֆունկցիան վերադարձնում է num ամբողջ թվի exp աստիճանի արժեքը։
+#include <iostream>
+int power(int num, int expp){
+    if(expp < 0){
+        return 0;
+    }
+    if(expp == 0){
+        return 1;
+    }
+    if(num == 0 || num == 1){
+        return num;
+    }
+    int k = 1;
+    for(int i = 0; i < expp; ++i){
+        k *= num;
+    }
+    return k;
+}
+int main(){
+    int num = 0;
+    std::cout << "Enter the number: ";
+    std::cin >> num;
+    int expp = 0;
+    std::cout << "tvi astichan: ";
+    std::cin >> expp;
+    std::cout << power(num, expp);
+    
+    return 0;
+}
+
+35)Մուտքագրել թիվ, տպել թվի թվանշանները առանձին առանձին էկրանին։ Օրինակ՝ մուտքագրված 5479 թվի համար տպել ‘5’, ‘4’, ‘7’, ‘9’։
+#include <iostream>
+int power(int num, int expp){
+    if(expp < 0){
+        return 0;
+    }
+    if(expp == 0){
+        return 1;
+    }
+    if(num == 0 || num == 1){
+        return num;
+    }
+    int k = 1;
+    for(int i = 0; i < expp; ++i){
+        k *= num;
+    }
+    return k;
+}
+int main(){
+    int num = 0;
+    std::cout << "Enter the number: ";
+    std::cin >> num;
+    int expp = 0;
+    std::cout << "tvi astichan: ";
+    std::cin >> expp;
+    std::cout << power(num, expp);
+    
+    return 0;
+}
+
+36)Մուտքագրել թիվ, փոխակերպել թիվը տասնվեցական համակարգի թվի եւ տպել արդյունքը։
+#include <iostream>
+const char* arg = "0123456789ABCDEF";
+void hex(int num, size_t k = 16){//k-n inch lini ayd hamakargy klini
+    if(num == 0){
+        return;
+    }
+    hex(num / k);
+    std::cout << arg[num % k];
+    
+}
+int main(){
+    int num = 0;
+    std::cout << "Enter the number: ";
+    std::cin >> num;
+    hex(num);
+    
+    return 0;
+}
+
+37)Fibonachi rekursiv
+#include <iostream>
+
+int fib(int n){
+    if (n < 0){
+        return -1;
+    }
+    if (n < 2){
+        return n;
+    }
+    return fib(n - 1) + fib(n - 2);
+}
+int main()
+{
+    int x = 0; 
+    std::cin >> x;
+    std::cout << fib(x);
+    
+    return 0;
+}
+38)fibonachi bacasakan indexov tveri hamar
+#include <iostream>
+
+int fib(int n){
+    if (n < 0){
+        return n;
+    }
+    if (n < 2){
+        return n;
+    }
+    return fib(n - 1) + fib(n - 2);
+}
+
+int u_f(int n){
+    int tmp = fib(n < 0 ? -n : n);
+    if (n < 0 && n % 2 ==0){
+        return -tmp;
+    }
+    return tmp;   
+}
+int main(){
+    std::cout << fib(-4);
+}
+
+39)rekursive binary search
+#include <iostream>
+int b_search(int* arr, int a, int l, int r){
+    if(l => r){
+        return -1;
+    }
+    std::cout << arr[l] << " " << arr[r] << std::endl;
+    int mid = l + (r - l) / 2;
+    if(arr[mid] == a){
+        return mid;
+    }
+    else if(arr[mid] > a){
+        return b_search(arr, a, l, mid - 1);
+    }
+    else{
+        return b_search(arr, a, mid + 1, r);
+    }
+}
+int main()
+{
+    const int size = 7;
+    int arr[size];
+    for(int i = 0; i < size; ++i){
+        std::cout << "array: ";
+        std::cin >> arr[i];
+    }
+    int l = 0;
+    int r = size - 1;
+    int index = b_search(arr, 3, l, r);
+    std::cout << index;
+    return 0;
+}
+40)Array max element rekursive
+
