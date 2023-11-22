@@ -1076,7 +1076,7 @@ int main(){
     std::cout << fib(-4);
 }
 
-39)rekursive binary search
+39)Իրականացնել բինար որոնման ալգորիթմը զանգվածի համար ռեկուրսիվ տարբերակներով։
 #include <iostream>
 int b_search(int* arr, int a, int l, int r){
     if(l => r){
@@ -1108,5 +1108,85 @@ int main()
     std::cout << index;
     return 0;
 }
-40)Array max element rekursive
+40)Իրականացնել ռեկուրսիվ ֆունկցիա, որը ստանում է զանգված և վերադարձնում զանգվածի ամենափոքր (ամենամեծ) էլեմենտը։
+#include <iostream>
 
+int max(int a, int b){
+    if (a > b){
+        return a;
+    }
+    return b;
+}
+
+int maxelm(int* arr, int size){
+    if (size == 0){
+        throw std::invalid_argument("");
+    }
+    if (size == 1){
+        return *arr;
+    } 
+    return max(*arr, maxelm(arr + 1, size - 1));
+}
+int main(){
+    int arr[5] {1,20,3,4,5};
+    std::cout << maxelm(arr, 5);
+}
+41)Իրականացնել ռեկուրսիվ ֆունկցիա, որը կստանա տող և կվերադարձնի տողի երկարությունը։
+#include <iostream>
+int len(char* str){
+    if (*str == '\0'){
+        return 0;
+    }
+    return 1 + len(str + 1);
+}
+int main(){
+    char str[20] = "Hello";
+    std::cout << len(str);
+}
+
+42)Իրականացնել ռեկուրսիվ ֆունկցիա, որը ստանում է թիվ և վերադարձնում թվի թվանշանների արտադրյալը։
+#include <iostream>
+int mul(int n){
+   if(n == 0){
+       return 1;
+   }
+   return (n % 10) * mul(n / 10);
+}
+int main(){
+    int num; 
+    std::cin >> num;
+    int x = mul(num);
+    std::cout << x;
+}
+43)Գրել տրված թվի ֆակտորիալը հաշվող ռեկուրսիվ ֆունկցիա
+#include <iostream>
+int fact(int n){
+   if(n == 0 || n == 1){
+       return 1;
+   }
+   return n * fact(n - 1);
+}
+int main(){
+    int num; 
+    std::cin >> num;
+    int x = fact(num);
+    std::cout << x;
+}
+
+44)Իրականացնել ռեկուրսիվ ֆունկցիա, որը ստանում է N թիվ և վերադարձնում այդ թվի երկուական համակարգում ներկայացումը։
+#include <iostream>
+void bin(int n) {
+    if (n <= 0) {
+        return;
+    }
+
+    bin(n / 2);
+    std::cout << n % 2;
+}
+int main(){
+    int num; 
+    std::cin >> num;
+    bin(num);
+}
+
+45)Իրականացնել ռեկուրսիվ ֆունկցիա, որը ստանում է տող և վերադարձնում տողում առաջին հանդիպած մեծատառը։
