@@ -1175,18 +1175,36 @@ int main(){
 
 44)Իրականացնել ռեկուրսիվ ֆունկցիա, որը ստանում է N թիվ և վերադարձնում այդ թվի երկուական համակարգում ներկայացումը։
 #include <iostream>
-void bin(int n) {
-    if (n <= 0) {
-        return;
+std::string bin(int n) {
+    if (n == 0) {
+        return " ";
     }
 
-    bin(n / 2);
-    std::cout << n % 2;
+    return bin(n / 2) + (char)(n % 2 + '0');
 }
 int main(){
     int num; 
     std::cin >> num;
-    bin(num);
+    std::cout << bin(num);
 }
 
 45)Իրականացնել ռեկուրսիվ ֆունկցիա, որը ստանում է տող և վերադարձնում տողում առաջին հանդիպած մեծատառը։
+#include <iostream>
+
+char str_mec(char* str) {
+    if (*str == '\0') {
+        return '0';
+    }
+    
+    if(*str >= 'A' && *str <= 'Z'){
+        return *str;
+    }
+    return str_mec(str + 1);
+}
+
+int main(){
+    char ch[] = "anaHit";
+    std::cout << str_mec(ch);
+    return 0;
+}
+46)Մուտքագրել քառակուսային մատրից և տպել էկրանին նրա տարրերը։
