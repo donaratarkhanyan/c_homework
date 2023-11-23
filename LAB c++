@@ -1207,4 +1207,191 @@ int main(){
     std::cout << str_mec(ch);
     return 0;
 }
-46)Մուտքագրել քառակուսային մատրից և տպել էկրանին նրա տարրերը։
+46)Իրականացնել ֆունկցիա, որը կստանա MxN չափի մատրից և կվերադարձնի այն տարրի արժեքը, որը տողում ամենամեծն է, իսկ սյունում ամենափոքրը
+#include <iostream>
+
+int max_in_row(int arr[][10], int col, size_t ind){
+    int max = arr[ind][0];
+    int k = 0;
+    for(int i = 1; i < col; ++i){
+        if(arr[ind][i] > max){
+            max = arr[ind][i];
+            k = i;
+        }
+    }
+    for(int i = k + 1; i < col; ++i){
+        if(arr[ind][i] == max){
+            return -1;
+        }
+    }
+    return k;
+}
+
+bool check(int arr[][10], int row, int ind, int k){
+    for(int i = 0; i < row; ++i){
+        if(arr[i][k] <= arr[ind][k] && i != ind){
+            return false;
+        }
+    }
+    return true;
+}
+
+int get_num(int arr[][10], int row, int col){
+    for(int i = 0; i < row; ++i){
+        int max_ind = max_in_row(arr, col, i);
+        if(max_ind == -1){
+            continue;
+        }
+        if(check(arr, row, i , max_ind)){
+            return arr[i][max_ind];
+        }
+    } 
+    throw std::invalid_argument("DE UREMN HAJOX");
+}
+
+int main()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+{
+    int arr[10][10];
+    int row;
+    int col;
+    do{
+        std::cout << "Enter the row: ";
+        std::cin >> row;
+    }while(row < 1 || row > 10);
+    
+    do{
+        std::cout << "Enter the column: ";
+        std::cin >> col;
+    }while(col < 1 || col > 10);
+    
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            arr[i][j] = rand()%10;
+        }
+    }
+    std::cout << get_num(arr, row, col);
+}
+47)Գրել ծրագիր, որը կգտնի NxM (N քանակությամբ տող և M քանակությամբ սյուն) չափանի մատրիցի մեծագույն արժեքը և կտպի էկրանին։
+#include <iostream>
+
+void scan(int mat[][10], int, int);
+void print(int mat[][10], int, int);
+int mat_max(int mat[][10], int, int);
+
+int main()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+{
+    int mat[10][10];
+    int row;
+    int col;
+    do{
+        std::cout << "Enter the row: ";
+        std::cin >> row;
+    }while(row < 1 || row > 10);
+    
+    do{
+        std::cout << "Enter the column: ";
+        std::cin >> col;
+    }while(col < 1 || col > 10);
+    
+    scan(mat, row, col);
+    print(mat, row, col);
+    int max = mat_max(mat, row, col);
+    std::cout << "MAX element in matrix: " << max;
+    
+}
+
+void scan(int mat[][10], int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            mat[i][j] = rand()%10;
+        }
+    }
+}
+
+void print(int mat[][10], int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+           std::cout << mat[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+int mat_max(int mat[][10], int row, int col){
+    int max = mat[0][0];
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+           if(mat[i][j] > max){
+               max = mat[i][j];
+           }
+        }
+    }
+    return max;
+}
+
+48)Գրել ծրագիր, որը կգտնի NxM (N քանակությամբ տող և M քանակությամբ սյուն) չափանի մատրիցի փոքրագույն արժեքի ինդեքսները և կտպի էկրանին։
+#include <iostream>
+
+void scan(int mat[][10], int, int);
+void print(int mat[][10], int, int);
+void mat_min(int mat[][10], int, int);
+
+int main()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+{
+    int mat[10][10];
+    int row;
+    int col;
+    do{
+        std::cout << "Enter the row: ";
+        std::cin >> row;
+    }while(row < 1 || row > 10);
+    
+    do{
+        std::cout << "Enter the column: ";
+        std::cin >> col;
+    }while(col < 1 || col > 10);
+    
+    scan(mat, row, col);
+    print(mat, row, col);
+    mat_min(mat, row, col);
+    
+}
+
+void scan(int mat[][10], int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            mat[i][j] = rand()%10;
+        }
+    }
+}
+
+void print(int mat[][10], int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+           std::cout << mat[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+void mat_min(int mat[][10], int row, int col){
+    int min = mat[0][0];
+    int m = 0;
+    int k = 0;
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+           if(mat[i][j] < min){
+               min = mat[i][j];
+               m = i;
+               k = j;
+               
+           }
+        }
+    }
+    std::cout << "Min element index: " << m << " " << k << std::endl;
+}
+
+49)
+
+
+
+
