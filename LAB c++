@@ -1390,7 +1390,385 @@ void mat_min(int mat[][10], int row, int col){
     std::cout << "Min element index: " << m << " " << k << std::endl;
 }
 
-49)
+49)Իրականցնել ֆունկցիա, որը NxM (N քանակությամբ տող և M քանակությամբ սյուն) չափանի դինամիկ մատրիցի ցանկացած տողի մեծագույն արժեքների համար կստեղծի միաչափ դինամիկ զանգված։ Այսինքն միաչափ զանգվածի i ինդեքսի էլեմենտի արժեքը հավասար է լինելու մատրիցի i ինդեքսի տակ գտնվող տողի (միաչափ զանգվածի) մեծագույն արժեքին։
+#include <iostream>
+
+void scan(int**, int, int);
+void print(int**, int, int);
+void print(int*, int);
+int max(int*, int);
+int* creat(int**, int, int);
+
+int main()
+{
+    srand(time(NULL));
+    int row = 0;
+    int col = 0;
+    
+    do{
+        std::cout << "Enter row: ";
+        std::cin >> row;
+    }while(row <= 0);
+    do{
+        std::cout << "Enter col: ";
+        std::cin >> col;
+    }while(col <= 0);
+    
+    int** mat = new int*[row];
+    for(int i = 0; i < row; ++i){
+        mat[i] =  new int[col];
+    }
+
+    scan(mat, row, col);
+    print(mat, row, col);
+    int* arr = creat(mat, row, col);
+    print(arr, row);
+
+    for(int i = 0; i < row; ++i){
+        delete[] mat[i];
+    }
+    delete[] mat;
+    delete[] arr;
+
+    return 0;
+}
+
+
+void scan(int** mat, int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            mat[i][j] = rand()%10;
+        }
+    }
+}
+
+void print(int** mat, int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            std::cout << mat[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+void print(int* arr, int size){
+    for(int i = 0; i < size; ++i){
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+
+int max(int* arr, int size){
+    int MAX = arr[0];
+    for(int i = 0; i < size; ++i){
+        if (arr[i] > MAX){
+            MAX = arr[i];
+        }
+    }
+    return MAX;
+}
+
+int* creat(int** mat, int row, int col){
+        int* arr = new int[row];
+        for(int i = 0; i < row; ++i){
+            arr[i] = max(mat[i], col);
+        }
+        return arr;
+}
+
+50)Իրականացնել ծրագիր, որը քառակուսային մատրիցի գլխավոր անկյունագծից վերև կհաշվի բոլոր էլեմենտների գումարը, 
+օժանդակ անկյունագծից վերև կհաշվի բոլոր էլեմենտների գումարը,
+օժանդակ անկյունագծից ներքև կհաշվի բոլոր էլեմենտների գումարը։
+#include <iostream>
+
+void scan(int mat[][10], int, int);
+void print(int mat[][10], int, int);
+int oj_verev(int mat[][10], int, int, int);
+int oj_nerqev(int mat[][10], int, int, int);
+int glx_verev(int mat[][10], int, int, int);
+
+int main()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+{
+    int mat[10][10];
+    int row;
+    int col;
+    int sum = 0;
+    
+    do{
+        std::cout << "Enter the row: ";
+        std::cin >> row;
+    }while(row < 1 || row > 10);
+    
+    do{
+        std::cout << "Enter the column: ";
+        std::cin >> col;
+    }while(col < 1 || col > 10);
+    
+    scan(mat, row, col);
+    print(mat, row, col);
+    std::cout<< "Ojandak ankyunagcic verevi gumar: " << oj_verev(mat, row, col, sum) << std::endl;
+    std::cout<< "Ojandak ankyunagcic nerqev gumar: " << oj_nerqev(mat, row, col, sum) << std::endl;
+    std::cout<< "Glxavor ankyunagcic verevi gumar: " << glx_verev(mat, row, col, sum) << std::endl;
+
+
+    return 0;
+}
+
+
+void scan(int mat[][10], int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            mat[i][j] = rand()%10;
+        }
+    }
+}
+
+void print(int mat[][10], int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+           std::cout << mat[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+
+int oj_verev(int mat[][10], int row, int col, int sum){
+    for(int i = 0; i < row - 1; ++i){
+        for(int j = 0; j < col - i - 1; ++j){
+            sum += mat[i][j];
+        }
+    }
+    return sum;
+}
+
+int oj_nerqev(int mat[][10], int row, int col, int sum){
+    for(int i = 1; i < row; ++i){
+        for(int j = col - i; j < col; ++j){
+            sum += mat[i][j];
+        }
+    }
+    return sum;
+}
+
+int glx_verev(int mat[][10], int row, int col, int sum){
+    for(int i = 0; i < row - 1; ++i){
+        for(int j = i + 1; j < col; ++j){
+            sum += mat[i][j];
+        }
+    }
+    return sum;
+}
+
+51)Անհրաժեշտ է կառուցել և արտածել nxn չափանի մատրից, որը ստացվում է 1-ից մինչև n*n ամբողջ թվերը հետևյալ հերթականությամբ այդ մատրիցում գրելուց. Սկզբում թվերը վերևից ներքև գրել առաջին սյունում, այնուհետև ներքևից վերև գրել երկրորդ սյունում, որից հետո վերևից ներքև գրել երրորդ սյունում և այդպես շարունակ մինչև մատրիցի վերջին սյունը: Օրինակ՝
+n=4 դեպքում պետք է արտածել հետևյալ մատրիցը.
+1 8  9 16
+2 7 10 15
+3 6 11 14
+4 5 12 13
+
+
+52)Իրականացնել ֆունկցիա, որը հաշվում և վերադարձնում է քառակուսային մատրիցի գլխավոր անկյունագծի տարրերի գումարը։
+քառակուսային մատրիցի գլխավոր անկյունագծի վերև գտնվող տարրերի գումարը անկյունագծի էլեմենտները ներառյալ։
+քառակուսային մատրիցի օժանդակ անկյունագծի տարրերի գումարը։
+#include <iostream>
+
+void scan(int mat[][10], int, int);
+void print(int mat[][10], int, int);
+int ojandak(int mat[][10], int, int);
+int glx_and_verev(int mat[][10], int, int, int);
+int glxavor(int mat[][10], int, int);
+
+
+int main()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+{
+    int mat[10][10];
+    int row;
+    int col;
+    int sum = 0;
+    
+    do{
+        std::cout << "Enter the row: ";
+        std::cin >> row;
+    }while(row < 1 || row > 10);
+    
+    do{
+        std::cout << "Enter the column: ";
+        std::cin >> col;
+    }while(col < 1 || col > 10);
+    
+    scan(mat, row, col);
+    print(mat, row, col);
+    std::cout<< "Ojandak ankyunagci elementneri gumar: " << ojandak(mat, row, sum) << std::endl;
+    std::cout<< "Glxavor ankyunagcic verev ev ankyunagci gumar: " << glx_and_verev(mat, row, col, sum) << std::endl;
+    std::cout<< "Glxavor ankyunagci elementneri gumar: " << glxavor(mat, row, sum) << std::endl;
+
+
+    return 0;
+}
+
+
+void scan(int mat[][10], int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            mat[i][j] = rand()%10;
+        }
+    }
+}
+
+void print(int mat[][10], int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+           std::cout << mat[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+
+int ojandak(int mat[][10], int row, int sum){
+    for(int i = 0; i < row; ++i){
+            sum += mat[i][row - i - 1];
+    }
+    return sum;
+}
+
+int glx_and_verev(int mat[][10], int row, int col, int sum){
+    for(int i = 0; i < row; ++i){
+        for(int j = i; j < col; ++j){
+            sum += mat[i][j];
+        }
+    }
+    return sum;
+}
+
+int glxavor(int mat[][10], int row, int sum){
+    for(int i = 0; i < row; ++i){
+        sum += mat[i][i];
+    }
+    return sum;
+}
+
+53)Իրականացնել ֆունկցիա, որը ստանում է քառակուսային մատրից։ Ֆունկցիան մատրիցի զույգ ինդեքսով տողերի էլեմենտները փոխարինում է 0-ներով և վերադարձնում։
+#include <iostream>
+
+void scan(int mat[][10], int, int);
+void print(int mat[][10], int, int);
+void change(int mat[][10], int, int);
+
+int main()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+{
+    int mat[10][10];
+    int row;
+    int col;
+    
+    do{
+        std::cout << "Enter the row: ";
+        std::cin >> row;
+    }while(row < 1 || row > 10);
+    
+    do{
+        std::cout << "Enter the column: ";
+        std::cin >> col;
+    }while(col < 1 || col > 10);
+    
+    scan(mat, row, col);
+    print(mat, row, col);
+    std::cout << std::endl;
+    std::cout << "Change matrix" << std::endl;
+    change(mat, row, col);
+    print(mat, row, col);
+
+
+    return 0;
+}
+
+
+void scan(int mat[][10], int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            mat[i][j] = rand()%10;
+        }
+    }
+}
+
+void print(int mat[][10], int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+           std::cout << mat[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+void change(int mat[][10], int row, int col){
+    for(int i = 0; i < row; i+=2){
+        for(int j = 0; j < col; ++j){
+            mat[i][j] = 0;
+        }
+    }
+}
+
+
+54)Իրականացնել ֆունկցիա, որը քառակուսային մատրիցի գլխավոր և օժանդակ անկյունագծի էլեմենտների արժեքները տեղերով կփոխի։
+#include <iostream>
+
+void scan(int mat[][10], int, int);
+void print(int mat[][10], int, int);
+void change(int mat[][10], int, int);
+
+int main()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+{
+    int mat[10][10];
+    int row;
+    int col;
+    
+    do{
+        std::cout << "Enter the row: ";
+        std::cin >> row;
+    }while(row < 1 || row > 10);
+    
+    do{
+        std::cout << "Enter the column: ";
+        std::cin >> col;
+    }while(col < 1 || col > 10);
+    
+    scan(mat, row, col);
+    print(mat, row, col);
+    std::cout << std::endl;
+    std::cout << "Change matrix" << std::endl;
+    change(mat, row, col);
+    print(mat, row, col);
+
+
+    return 0;
+}
+
+
+void scan(int mat[][10], int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            mat[i][j] = rand()%10;
+        }
+    }
+}
+
+void print(int mat[][10], int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+           std::cout << mat[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+void change(int mat[][10], int row, int col){
+    for(int i = 0; i < row; ++i){
+        mat[i][i] = mat[i][row - i - 1];
+    }
+}
 
 
 
