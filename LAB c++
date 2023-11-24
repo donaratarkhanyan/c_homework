@@ -1052,6 +1052,89 @@ int main()
     
     return 0;
 }
+456)Գրել ռեկուրսիվ ֆունկցիա, որը ստանում է n բնական թիվ և տպում է n-ից 0 թվերը։
+#include <iostream>
+void print(int n){
+    if(n == 0){
+        std::cout << 0; 
+        return;
+    }
+    
+    std::cout << n << " ";
+    int k = n > 0 ? 1 : -1;
+    print(n - k);
+    
+}
+
+int main(){
+    int x = 0;
+    std::cin >> x;
+    print(x);
+}
+
+457)Գրել ռեկուրսիվ ֆունկցիա, որը ստանում է n բնական թիվ և տպում է 0-ից n թվերը։
+#include <iostream>
+
+void print(int n){
+    if(n == 0){
+        std::cout << 0 << " "; 
+        return;
+    }
+    
+    int k = n > 0 ? 1 : -1;
+    print(n - k);
+    std::cout << n << " ";
+}
+
+int main(){
+    int x = 0;
+    std::cin >> x;
+    print(x);
+}
+
+458)Գրել ռեկուրսիվ ֆունկցիա, որը ստանում է ամբողջ թվային զանգված և տպում է զանգվածի էլեմենտները էկրանին։
+#include <iostream>
+void print_arr(int* arr, int size){
+    if(size == 0){
+        return;
+    }
+    std::cout << *arr;
+    print_arr(arr + 1, size - 1);
+}
+int main(){
+    const int size = 6;
+    int arr[6] = {1, 2, 3, 4, 5, 6};
+    print_arr(arr, size);
+}
+
+459)Իրականացնել ռեկուրսիվ ֆունկցիա, որն ընդունում է թիվ և վերադարձնում նրա թվանշանների գումարը:
+#include <iostream>
+int sum(int n){
+   if(n == 0){
+       return 0;
+   }
+   return n % 10 + sum(n / 10);
+}
+int main(){
+    int num = 0; 
+    std::cin >> num;
+    int x = sum(num);
+    std::cout << x;
+}
+
+460)Իրականացնել ռեկուրսիվ ֆունկցիա, որը հաշվում է երկու թվերի ամենամեծ ընդհանուր բաժանարարը։
+#include <iostream>
+int  gcd(int a, int b){
+    if(b == 0){
+        return a;
+    }
+    return gcd(b, a % b);
+}        
+int main(){
+    std::cout << gcd(18, 24);
+    return 0;
+}
+
 38)fibonachi bacasakan indexov tveri hamar
 #include <iostream>
 
