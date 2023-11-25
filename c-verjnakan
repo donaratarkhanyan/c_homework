@@ -142,6 +142,9 @@ int main()
     return 0;
 }
 
+11)Օգտվելով դինամիկ հիշողությունից, իրականացնել ֆունկցիա,որը հաշվում և վերադարձնում է քառակուսային մատրիցի օժանդակ անկյունագծի տարրերի գումարը։
+
+
 12.Իրականացրեք մի ֆունկցիա, որը որպես արգումնետ ստանալու է դինամիկ զանգվածների ցուցիչներ, զանգվածների չափերը և միավորում է երկու զանգվածները  նոր ստեղծված դինամիկ զանգվածի մեջ։ Ֆունկցիան վերադարձնելու է նոր ստեղծված զանգվածի հասցեն։
 #include <stdio.h>
 #include <stdlib.h>
@@ -307,3 +310,61 @@ int main()
     return 0;
 }
 
+19) Իրականացնել cstring գրադարանային ֆայլի կողմից տրամադրվող  strcat() ֆունկցիային համարժեք ֆունկցիա:
+#include <stdio.h>
+
+void strlen2(char* str, char* str2){
+    while(*str != '\0'){
+        str = str + 1;
+    }
+    while(*str2 != '\0'){
+        *str = *str2;
+        str ++;
+        str2++;
+    }
+    *str = '\0';
+}
+int main()
+{
+    char str[20] = "Hello ";
+    char str2[30] = "world!!";
+    strlen2(str, str2);
+    printf("%s", str); 
+    return 0;
+}
+20)Իրականացնել ֆունկցիա, որը սորտավորում է ամբողջ թվով զանգվածի տարրերը:
+#include <stdio.h>
+#include <stdlib.h>
+
+void sort(int* arr, int size){
+    for(int i = 0; i < size; ++i){
+        for(int j = i + 1; j < size; ++j){
+            if(arr[i] > arr[j]){ // if(arr[i] < arr[j]) mecic poqr
+                int tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
+            }
+        }
+    }
+}
+int main()
+{
+    size_t size = 5;
+    int arr[size];
+    for(int i = 0; i < size; ++i){
+        arr[i] = rand()%9;
+    }
+    
+    printf("original array:\n");
+    for(int i = 0; i < size; ++i){
+        printf("%d ", arr[i]);
+    }
+    
+    printf("\nsorted array:\n");
+    sort(arr, size);
+    
+    for(int i = 0; i < size; ++i){
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
