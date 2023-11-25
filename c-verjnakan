@@ -29,30 +29,45 @@ int main()
 #include <stdio.h>
 #include <stdlib.h>
 
+void scan(int*, int);
+void print(int*, int);
+
+
 int main()
 {
-	int size1 = 0;
-	printf("Enter the first array size: ");
-	scanf("%i", &size1);
-	int* arr_1 = (int*) calloc (size1, sizeof(int));
-	for(int i = 0; i < size1; ++i){
-		printf("enter the array element: ");
-		scanf("%i", &arr_1[i]);
-	}
-	
-	int size2 = 0;
-        printf("Enter the scond array size: ");
-        scanf("%i", &size2);
-        int* arr_2 = (int*) calloc (size2, sizeof(int));
-        for(int i = 0; i < size2; ++i){
-                printf("enter the array element: ");
-                scanf("%i", &arr_2[i]);
-        }
+    int size = 0;
+    printf("Enter the array size: ");
+    scanf("%i", &size);
+    int* arr = (int*)calloc(size, sizeof(int));
+    int* arr2 = (int*)calloc(size, sizeof(int));
+    
+    printf("First array \n");
+    scan(arr, size);
+    printf("Second array \n");
+    scan(arr2, size);
+    
+    printf("\nNEW\n");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i] * arr2[i]);
+    }
 
-	for(int i = 0; i < size1; ++i){
-		printf("%i * %i = %i\n", arr_1[i],arr_2[i], arr_1[i] * arr_2[i]);
+    free(arr);
+    free(arr2);
+    return 0;
+}
 
-	}
+void scan(int* arr, int size){
+    for(int i = 0; i < size; ++i){
+        printf(" Array element: ");
+        scanf("%i", &arr[i]);
+    }
+}
+
+void print(int* arr, int size){
+    for (int i = 0; i < size; ++i) {
+        printf("%d ", arr[i]);
+    }
+}
 
 }
 
@@ -173,3 +188,122 @@ int main()
 	}
 	return 0;
 }
+
+13)Գրեք ծրագիր, որը ամբողջ թվային զանգվածի բոլոր կենտ թվերը լցնում է մեկ այլ զանգվածի մեջ: Ստացված զանգվածը տպել էկրանին։
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int size = 0;
+    printf("Enter the array size: ");
+    scanf("%i", &size);
+    int* arr = (int*)calloc(size, sizeof(int));
+    for(int i = 0; i < size; ++i){
+        printf(" Array element: ");
+        scanf("%i", &arr[i]);
+    }
+    
+    int count = 0;
+    for(int i = 0; i < size; ++i){
+        if(arr[i] % 2 != 0){
+            ++ count;
+        }
+    }
+
+    int* arr2 = (int*)calloc(count, sizeof(int));
+    int k = 0;
+    for(int i = 0; i < size; ++i){
+        if(arr[i] % 2 != 0){
+            arr2[k] = arr[i];
+            k++;
+        }
+    }
+    printf("\nNEW Array: ");
+    for (int i = 0; i < count; ++i) {
+        printf("%d ", arr2[i]);
+    }
+    free(arr);
+    free(arr2);
+    return 0;
+}
+14)Գրեք ծրագիր, որը գտնում և տպում է զանգվածի երկրորդ ամենափոքր տարրը: Այսինքն՝ տվյալ տարրը փոքր է լինելու զանգվածի բոլոր էլեմենտներից, բացառությամբ երկու էլեմենտներից (ինքը իրենից և փոքրագույնից)
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int size = 0;
+    printf("Enter the array size: ");
+    scanf("%i", &size);
+    int* arr = (int*)calloc(size, sizeof(int));
+    for(int i = 0; i < size; ++i){
+        printf(" Array element: ");
+        scanf("%i", &arr[i]);
+    }
+    
+    int min1 = arr[0];
+    int min2 = arr[0];
+    for(int i = 0; i < size; ++i){
+        if(arr[i] < min1){
+            min2 = min1;
+            min1 = arr[i];
+        }
+    }
+    printf(" Array second minimum element %i: ", min2);    
+    
+    free(arr);
+    return 0;
+}
+16)Գրեք ֆունկցիա, որը ցուցիչների միջոցով փոխում է երկու ամբողջ թվով փոփոխականների արժեքները:
+#include <stdio.h>
+void swap_p(int* a, int* b){
+    int tmp = *a; 
+    *a = *b;
+    *b = tmp;
+}
+int main()
+{
+    int a = 6;
+    int b = 3;
+    swap_p(&a, &b);
+    printf("a = %d\n b = %d", a, b);
+    
+    return 0;
+}
+
+17).Իրականացնել cstring գրադարանային ֆայլի կողմից տրամադրվող  strlen() ֆունկցիային համարժեք ֆունկցիա:
+#include <stdio.h>
+
+int strlen2(char* str){
+    int i = 0;
+    while(str[i] != '\0'){
+        ++i;
+    }
+    return i;
+}
+int main()
+{
+    char str[20];
+    scanf("%s", str);
+    printf("%d", strlen2(str));  
+    return 0;
+}
+
+18.Իրականացնել cstring գրադարանային ֆայլի կողմից տրամադրվող  strcpy() ֆունկցիային համարժեք ֆունկցիա։
+#include <stdio.h>
+void strlen2(char* str, char* str2){
+    int i = 0;
+    while(str[i] != '\0'){
+        str2[i] = str[i];
+        ++i;
+    }
+}
+int main()
+{
+    char str[20];
+    char str2[30];
+    scanf("%s", str);
+    strlen2(str, str2);
+    printf("%s", str2);
+    return 0;
+}
+
