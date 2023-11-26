@@ -368,3 +368,34 @@ int main()
     }
     return 0;
 }
+
+21)Իրականացնել ֆունկցիա, որը տասկան թիվը վերածում է երկուականի:
+#include <stdio.h>
+void binnary(int n){
+    int bin[32];
+    int i = 0;
+    if(n == 0){
+        printf("Binary: 0\n");
+        return;
+    }
+    while(n > 0){
+        bin[i] = n % 2;
+        n /= 2;
+        ++i;
+    }
+    
+    printf("Binary: ");
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%d", bin[j]);
+    }
+}
+
+int main()
+{
+    int x = 0;
+    printf("enter the number: ");
+    scanf("%i", &x);
+    binnary(x);
+
+    return 0;
+}
