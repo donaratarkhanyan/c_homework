@@ -15,3 +15,73 @@ int main()
     return 0;
 }
 
+2)Հայտարարեք ցանկացած երեք տարբերվող տիպի ցուցիչներ: Արժեքավորեք ցուցիչները և տպեք էկրանին տվյալ ցուցիչների մեջ պահված հասցեները;
+#include <iostream>
+int main()
+{
+    int a = 7;
+    double d = 4.3;
+    short sh = 2;
+    char ch = 'h';
+    int* p_a = &a;
+    double* p_d = &d;
+    short* p_sh = &sh;
+    char* p_ch = &ch;
+    
+    std::cout <<"Address int a = " <<  p_a << std::endl;
+    std::cout <<"Address double d = " << p_d << std::endl;
+    std::cout <<"Address short sh = " << p_sh << std::endl;
+    std::cout <<"Address char ch = " << (void*)p_ch << std::endl;
+    
+    return 0;
+}
+3)Գրեք ծրագիր, որտեղ ցուցիչի մեջ պահված կլինի զանգվածի առաջին էլեմենտի հասցեն: Ցուցիչի օգնությամբ տպել զանգվածի տարրերը էկրանին։
+#include <iostream>
+
+int main()
+{
+    size_t size = 5;
+    int arr[size] = {4,2,5,8,3};
+    int* p_arr = arr;
+    for(int i = 0; i < size; ++i){
+        std::cout << *(p_arr + i) << " ";
+    }
+    return 0;
+}
+
+4)Հայտարարեք ցանկացած տիպի ցուցիչի և սկզբնավորեք այն NULL-ով։
+#include <iostream>
+
+int main()
+{
+    int* ptr = NULL;
+    std::cout << ptr << std::endl;
+    return 0;
+}
+
+5)Հայտարարել ամբողջ թվով փոփոխական և ցուցիչ: Ցուցիչին տվեք փոփոխականի հասցեն և ցուցիչի միջոցով տպեք փոփոխականի արժեքը:
+#include <iostream>
+
+int main()
+{
+    int a = 9;
+    int* ptr = &a;
+    *ptr = 7;
+    std::cout << a << std::endl;
+    return 0;
+}
+6)Հայտարարեք երկու ամբողջ թվով փոփոխական և երկու ցուցիչ: Ցուցիչներին վերագրեք փոփոխական հասցեներ և կատարեք թվաբանական գործողություններ (գումարում, հանում) օգտագործելով ցուցիչներ։
+#include <iostream>
+
+int main()
+{
+    int a = 9;
+    int v = 4;
+    int* ptr = &a;
+    int* ptr_v = &v;
+    
+    std::cout << (*ptr) + (*ptr_v) << std::endl;
+    std::cout << (*ptr) * (*ptr_v) << std::endl;
+    std::cout << (*ptr) - (*ptr_v) << std::endl; 
+    return 0;
+}
