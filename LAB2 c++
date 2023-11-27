@@ -1,0 +1,17 @@
+1)Գրել ֆունկցիա, որը ցուցիչների միջոցով փոխում է երկու ամբողջ թվային փոփոխականների արժեքները։
+#include <iostream>
+void swap(int* a, int* b){
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+int main()
+{
+    int a = 8;
+    int b = 1;
+    swap(&a, &b);
+    std::cout  << a << " " << b;
+
+    return 0;
+}
+
