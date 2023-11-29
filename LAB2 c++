@@ -96,3 +96,34 @@ int main()
 10)Իրականացնել string.h գրադարանային ֆայլի կողմից տրամադրվող strcmp() ֆունկցիային համարժեք ֆունկցիա:
 
 11)Իրականացնել string.h գրադարանային ֆայլի կողմից տրամադրվող strstr() ֆունկցիային համարժեք ֆունկցիա:
+
+12)Իրականացնել ֆունկցիա, որը ստանում է զանգված և բուլիան արժեք վերադարձնող ֆունկցիայի ցուցիչ։ 
+Ֆունկցիան զանգվածի բոլոր էլեմենտների վրա կանչում է ստացված ֆունկցիան։
+#include <iostream>
+
+bool n(int x){
+    if (x % 2 == 0){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+void foo(int* arr, int size, bool (*ptr)(int)){
+    for(int i = 0; i < size; ++i){
+        if (ptr(arr[i])){
+            std::cout << arr[i] << "zuyg e" << std::endl;
+        } else {
+            std::cout << arr[i] << "kent e" << std::endl;
+        }
+    }
+}
+
+int main()
+{
+    int arr[5] = {1, 2, 3, 4, 5};
+    foo(arr, 5, n);
+
+    return 0;
+}
+
