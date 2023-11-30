@@ -279,3 +279,49 @@ int main()
 
     return 0;
 }
+
+15)Իրականացնել հաշվիչ ծրագիր, որն օգտագործում է std::map և ֆունկցիայի ցուցիչներ։ Ֆունկցիայի ցուցիչները հղվում են համապատասխան թվաբանական գործողությունը կատարող ֆունկցիայի վրա։
+#include <iostream>
+#include <map>
+
+int sum(int, int);
+int sub(int, int);
+int mul(int, int);
+int divi(int, int);
+
+int main()
+{
+    std::map<char, int (*)(int, int)> cal;
+    cal['+'] = sum;
+    cal['-'] = sub;
+    cal['*'] = mul;
+    cal['/'] = divi;
+
+    char ch;
+    int num1 = 0;
+    int num2 = 0;
+    std::cout << "Enter the expretion: ";
+    std::cin >> num1 >> ch >> num2;
+    std::cout << "Resalt: " << cal[ch](num1, num2) << std::endl;
+
+    return 0;
+}
+
+int sum(int a, int b){
+    return a + b;
+}
+
+int sub(int a, int b){
+    return a - b;
+}
+
+int mul(int a, int b){
+    return a * b;
+}
+
+int divi(int a, int b){
+    if (b != 0){
+        return a / b;
+    }
+    throw std::invalid_argument("0 chi kareli bajanel!!");
+}
