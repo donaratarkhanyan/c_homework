@@ -255,3 +255,27 @@ int main()
     return 0;
 }
 
+14)Գրել void foo(int target, char c1, char c2, short sh) նախատիպով ֆունկցիան, որը c1, c2 և sh փոփոխականների արժեքները հերթականությամբ կտեղավորի target int տիպի փոփոխականի մեջ։
+#include <iostream>
+
+void change(int target, char ch, char ch2, short sh){
+    int* ptr = &target;
+    void* v = (void*)ptr;
+    char* ch_p = (char*)v;
+    *ch_p = ch;
+    char* ch_p2 = (char*)v + 1;
+    *ch_p2 = ch2;
+    short* sh_p = (short*)v + 1;
+    *sh_p = sh;
+    std::cout << target;
+}
+int main()
+{
+    int i = 11;
+    char ch = '\0';
+    char ch2 = '\0';
+    short sh = 0;
+    change(i, ch, ch2, sh);
+
+    return 0;
+}
