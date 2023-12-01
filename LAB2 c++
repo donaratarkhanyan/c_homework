@@ -325,3 +325,20 @@ int divi(int a, int b){
     }
     throw std::invalid_argument("0 chi kareli bajanel!!");
 }
+16)to upper, to lower
+#include <iostream>
+void to_upper(char* str){
+    while(*str){
+        *str ^= 32;
+        ++str;
+    }
+}
+int main()
+{
+    char str[20];
+    std::cout << "Enter the string: ";
+    std::cin >> str;
+    to_upper(str);
+    std::cout << str;
+    return 0;
+}
