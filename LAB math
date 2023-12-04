@@ -1,0 +1,99 @@
+1)Տրված է բնական թիվ: Արտածել YES, եթե
+ա) թվի թվանշանների մեջ կա 3 թվանշան,
+բ) թվի թվանշանների մեջ չկա 5 թվանշան,
+գ) թվի թվանշանները աճման կարգով են դասավորված,
+դ) թվի թվանշանները նվազման կարգով չեն դասավորված,
+ե) թվի թվանշանների գումարը մեծ է քսանից,
+զ) թվի թվանշանների արտադրյալը փոքր է երեսունից:
+
+#include <iostream>
+
+bool x1(int n){//3 ka
+    while(n){
+        if(n % 10 == 3){
+            return true;
+        }
+    n /= 10;
+    }
+    return false;
+}
+
+bool x2(int n){///5 chka
+    while(n){
+        if(n % 10 == 5){
+            return false;
+        }
+    n /= 10;
+    }
+    return true;
+}
+
+
+bool x3(int n){//achman
+    int r = n % 10;
+    n /= 10;
+    while(n){
+        int l = n % 10;
+        if(l > r){
+            return false;
+        }
+        r = l;
+        n /= 10;
+    }
+    return true;
+}
+
+bool x4(int n){//nvazman
+    int r = n % 10;
+    n /= 10;
+    while(n){
+        int l = n % 10;
+        if(l < r){
+            return false;
+        }
+        r = l;
+        n /= 10;
+    }
+    return true;
+}
+
+bool x5(int n){
+    int sum = 0;
+    while(n){
+        sum += n % 10;
+        n /= 10;
+    }
+    if(sum > 20){
+        return true;
+    }
+    return false;
+}
+
+bool x6(int n){
+    int mul = 1;
+    while(n){
+        mul *= n % 10;
+        n /= 10;
+    }
+    if(mul < 30){
+        return true;
+    }
+    return false;
+}
+int main()
+{
+    int num = 0;
+    std::cout << "Enter the number:";
+    std::cin >> num;
+    const int size = 6;
+    bool (*ptr[size])(int) = {x1, x2, x3, x4, x5, x6};
+    for(int i = 0; i < size; ++i){
+        if(ptr[i](num)){
+            std::cout << "true" << std::endl;
+        }
+        else{
+            std::cout << "false" << std::endl;
+        }
+    }
+    return 0;
+}
