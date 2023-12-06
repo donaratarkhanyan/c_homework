@@ -1,4 +1,4 @@
-1)Տրված է բնական թիվ: Արտածել YES, եթե
+ 1)Տրված է բնական թիվ: Արտածել YES, եթե
 ա) թվի թվանշանների մեջ կա 3 թվանշան,
 բ) թվի թվանշանների մեջ չկա 5 թվանշան,
 գ) թվի թվանշանները աճման կարգով են դասավորված,
@@ -182,7 +182,89 @@ int main()
     return 0;
 }
 
-4)Գրել ֆունկցիա, որը ստանում է a և b թվերը(որտեղ a-ն ուղղանկյուն եռանկյան դիմացի էջն է, իսկ  b-ն ուղղանկյուն եռանկյան կից էջը) հաշվել և վերադարձնել կից էջով և ներքնաձիգով կազմած անկյան սինուսը(sin)
+4)Գրել ֆունկցիա, որը ստանում է a և b թվերը(որտեղ a-ն ուղղանկյուն եռանկյան դիմացի էջն է, իսկ  b-ն ուղղանկյուն եռանկյան կից էջը) 
+հաշվել և վերադարձնել կից էջով և ներքնաձիգով կազմած անկյան սինուսը(sin)
+հաշվել և վերադարձնել կից էջով և ներքնաձիգով կազմած անկյան կոսինուսը(cos)
+հաշվել և վերադարձնել կից էջով և ներքնաձիգով կազմած անկյան տանգենսը(tg)
+հաշվել և վերադարձնել կից էջով և ներքնաձիգով կազմած անկյան կոտանգենսը(ctg).
+#include <iostream>
+
+int power(int);
+double sqrtt(double, int);
+double calculate_sin(int, int);
+double calculate_cos(int, int);
+double calculate_tg(double, double);
+double calculate_ctg(double, double);
+
+
+int main()
+{   
+    double x = 1.0;
+    int a = 0;
+    int b = 0;
+    std::cout << "Enter the dimaci side: ";
+    std::cin >> a;
+    std::cout << "Enter the kic side: ";
+    std::cin >> b;
+    int c = power(a) + power(b);
+    std::cout <<"nerqnadzig = " << sqrtt(x, c) << std::endl;
+    int c_2 = sqrtt(x, c);
+    
+    double sinus = calculate_sin(a, c_2);
+    std::cout << "ankyan sin = " << sinus << std::endl;
+    
+    double cosinus = calculate_cos(b, c_2);
+    std::cout << "ankyan cos = " << cosinus << std::endl;
+    
+    double tanges = calculate_tg(sinus, cosinus);
+    std::cout << "ankyan tg = " << tanges << std::endl;
+    
+    double cotanges = calculate_ctg(cosinus, sinus);
+    std::cout << "ankyan ctg = " << cotanges << std::endl;
+    
+    
+    return 0;
+}
+
+int power(int num){
+    return num * num;
+}
+
+double sqrtt(double x, int n){
+    for(int i = 1; i < 10; ++i){
+        x = (x + (n / x)) / 2;
+    }
+    return x;
+}
+
+double calculate_cos(int b, int c){
+    if(c != 0){
+        return static_cast<double>(b) / c;
+    }
+    return 0.0;
+}
+
+double calculate_sin(int a, int c){
+    if(c != 0){
+        return static_cast<double>(a) / c;
+    }
+    return 0.0;
+}
+
+double calculate_tg(double sinus, double cosinus){
+    if(cosinus != 0){
+        return sinus / cosinus;
+    }
+    return 0.0;
+}
+
+double calculate_ctg(double cosinus, double sinus){
+    if(sinus != 0){
+        return cosinus / sinus;
+    }
+    return 0.0;
+}
+
 5)artahaytutyan arjeqn e hashvum
 #include <iostream>
 int fact(int n){
@@ -286,7 +368,7 @@ int main()
     return 0;
 }
 
-8)sqrt armat
+8)Մուտքագրել N թիվ և հաշվել տրված թվի արմատը՝ sqrt(N)։
 #include <iostream>
 double sqrtt(double x, int n){
     for(int i = 1; i < 10; ++i){
@@ -304,7 +386,8 @@ int main()
     return 0;
 }
 
-9)log e himqov x hashvelu hamar
+9)Տրված է X բնական թիվը։ Իրականացնել ֆունկցիա, որը կհաշվի տրված թվի լոգարիթմը 2 հիմքով։ 
+
 #include <iostream>
 #include <cmath>
 
@@ -330,7 +413,7 @@ int main()
     return 0;
 }
 
-10)log a himqov b hashvelu hamar
+10)Տրված է b և a բնական թվեր։ Իրականացնել ֆունկցիա, որը կհաշվի b թվի լոգարիթմը a հիմքով։
 #include <iostream>
 #include <cmath>
 
