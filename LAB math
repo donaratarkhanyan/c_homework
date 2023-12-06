@@ -285,3 +285,73 @@ int main()
     std::cout << "the number: " << find(index);
     return 0;
 }
+
+8)sqrt armat
+#include <iostream>
+double sqrtt(double x, int n){
+    for(int i = 1; i < 10; ++i){
+        x = (x + (n / x)) / 2;
+    }
+    return x;
+}
+int main()
+{
+    double x = 1;
+    int n = 0;
+    std::cout << "Enter the sqrt: ";
+    std::cin >> n;
+    std::cout << sqrtt(x, n);
+    return 0;
+}
+
+9)log e himqov x hashvelu hamar
+#include <iostream>
+#include <cmath>
+
+double foo(int n, double x){
+    return pow(((x - 1) / (x + 1)), 2 * n - 1) / (2 * n - 1);
+}
+
+double ln_x(double n){
+    double sum = 0.0;
+    for(int i = 1; i < 20; ++i){
+        sum += 2 * foo(i, n);
+    }
+    return sum;
+}
+
+int main()
+{
+    double n = 0;
+    std::cout << "Enter the number: ";
+    std::cin >> n;
+    std::cout << "Result = " <<ln_x(n);
+    
+    return 0;
+}
+
+10)log a himqov b hashvelu hamar
+#include <iostream>
+#include <cmath>
+
+double foo(int n, double x){
+    return pow(((x - 1) / (x + 1)), 2 * n - 1) / (2 * n - 1);
+}
+double ln_x(double n){
+    double sum = 0.0;
+    for(int i = 1; i < 50; ++i){
+        sum += 2 * foo(i, n);
+    }
+    return sum;
+}
+int main()
+{
+    double a = 0;
+    double b = 0;
+    std::cout << "Enter the a = ";
+    std::cin >> a;
+    std::cout << "Enter the b = ";
+    std::cin >> b;
+    std::cout << "Result = " << ln_x(b) / ln_x(a);
+   return 0;
+}
