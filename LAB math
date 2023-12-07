@@ -438,3 +438,68 @@ int main()
     std::cout << "Result = " << ln_x(b) / ln_x(a);
    return 0;
 }
+11)Մուտքագրել երեք բնական թվեր՝ a, b և c։ Հաշվել այդ կողմերով եռանկյան մակերեսը Հերոնի բանաձևով։
+Նկարագրել բուլյան ֆունկցիա, որն արգումենտում ստանում է երեք իրական թիվ և վերադարձնում է false, եթե գոյություն չունի տրված կողմերով եռանկյուն: 
+Հակառակ դեպքում վերադարձնում է true և վերադարձնում է նաև այդ եռանկյան մակերեսը:
+#include <iostream>
+bool is_triangle(double, double, double);
+double heron(double, double, double);
+double sqrtt(double);
+
+int main()
+{
+    
+    double a = 0;
+    double b = 0;
+    double c = 0;
+    std::cout << "Enter triangel side: ";
+    std::cin >> a >> b >> c;
+    std::cout << "Paragic: " << heron(a, b, c);
+    return 0;
+}
+
+bool is_triangle(double a, double b, double c){
+    if (a < 0 || b < 0 || c < 0){
+        return false;
+    }
+    if (a + b < c || a + c < b || b + c < a){
+        return false;
+    }
+    return true;
+}
+double heron(double a, double b, double c){
+    if (!is_triangle(a, b, c)){
+        throw std::invalid_argument("ERRORRRR!!");
+    }
+    double p =  (a + b + c) / 2;
+    double res = sqrtt(p * (p - a) * (p - b) * (p - c));
+    return res;
+}
+
+double sqrtt(double num){
+    double x = 1;
+    for(int i = 0; i < 10; ++i){
+        x = (x + (num / x)) / 2;
+    }
+    return x;
+}
+
+12)Տրված n դրական ամբողջ թվի համար արտածել 2-ի ամենամեծ աստիճանը, որը չի գերազանցում n-ը։
+#include <iostream>
+void find(int num){
+    int x = 1;
+    while(x < num){
+        x *= 2;
+    }
+    x /= 2;
+    std::cout << x << std::endl;
+}
+int main()
+{
+    int a = 0;
+    std::cout << "Enter the number:  ";
+    std::cin >> a;
+    find(a);
+
+    return 0;
+}
