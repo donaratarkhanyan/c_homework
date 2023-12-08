@@ -1,0 +1,102 @@
+1)Task1: Implement a Student Class
+The class should have the following properties:
+	1. studentID (int): A unique identifier for each student.
+	2. name (string): The name of the student.
+	3. grade (char): The grade is the overall level of achievement for a course.
+	4. marks[3] (double): The average marks of the student.
+	
+The class should also include the following methods:
+	displayInfo(): A method that displays the student's information, including student ID, name, and grade.
+	calculateGrade(): A method that calculates and sets grade based on the average mark. Assume a grading system (e.g., A if marks >= 90, B if marks >= 80, and so on).
+
+#include <iostream>
+
+class Student{
+    public:
+        void setName(std::string name) {
+            m_name = name;
+        }
+        void setMarks(double* marks) {
+            for(int i = 0; i < 3; ++i){
+                m_marks[i] = marks[i];
+            }
+            
+        }
+        void setId(int id) {
+            m_id = id;
+        }
+        
+        void setGrade(char grade){
+            m_grade = grade;
+        }
+        
+        std::string getName(){
+            return m_name;
+        }
+        
+        
+        int getId(){
+            return m_id;
+        }
+        
+        char getGrade(){
+            return m_grade;
+        }
+        
+        void calculateGrade(){
+            double mij = 0.0;
+            for(int i = 0; i < 3; ++i){
+                mij += m_marks[i];
+            }
+            mij /= 3;
+            if(mij <= 5){
+                m_grade = 'F';
+            }
+            if(mij > 5 && mij < 20){
+                m_grade = 'A';
+            }
+        }
+        
+        void displayInfo(){
+            std::cout << "Name: " << m_name << std::endl;
+            std::cout << "Id: " << m_id << std::endl;
+            std::cout << "Grade: " << m_grade << std::endl;
+            std::cout << "Mij gnht: " << std::endl;
+            for(int i = 0; i < 3; ++i){
+                std::cout <<  m_marks[i] << " ";
+            }
+            std::cout << std::endl;
+
+        }
+    private:
+        std::string m_name;
+        double m_marks[3];
+        int m_id;
+        char m_grade;
+};
+
+int main()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+{
+    Student S;
+    std::string name;
+    std::cout << "Name: ";
+    std::cin >> name;
+    S.setName(name);
+    
+    int id;
+    std::cout << "Id: ";
+    std::cin >> id;
+    S.setId(id);
+    
+    size_t size = 3;
+    double arr_d[size];
+    for(int i = 0; i < size; ++i){
+        arr_d[i] = rand()%9;
+    }
+    S.setMarks(arr_d);
+    std::cout << std::endl;
+    S.calculateGrade();
+    S.displayInfo();
+    
+    
+}
