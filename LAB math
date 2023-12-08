@@ -770,3 +770,139 @@ int main()
     
     return 0;
 }
+
+18)Տրված է NxN չափանի քառակուսային մատրից։ Ստուգել արդյոք տրված մատրիցը սիմետրիկ է թե ոչ։
+#include <iostream>
+
+void scan(int**, int, int);
+void print(int**, int, int);
+bool chack(int**, int, int);
+
+int main()
+{
+    srand(time(NULL));
+    int row = 0;
+    int col = 0;
+    
+    do{
+        std::cout << "Enter row: ";
+        std::cin >> row;
+    }while(row <= 0);
+    do{
+        std::cout << "Enter col: ";
+        std::cin >> col;
+    }while(col <= 0);
+    
+    int** mat = new int*[row];
+    for(int i = 0; i < row; ++i){
+        mat[i] =  new int[col];
+    }
+
+    scan(mat, row, col);
+    print(mat, row, col);
+    
+    std::cout << chack(mat, row, col);
+    
+    return 0;
+}
+
+
+void scan(int** mat, int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            mat[i][j] = rand()%10;
+        }
+    }
+}
+
+void print(int** mat, int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            std::cout << mat[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+bool chack(int** mat, int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            if(mat[i][j] != mat[j][i]){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+19)Տրված են NxN չափանի երկու քառակուսային մատրիցներ։ Ստանալ երրորդ մատրից, որը իրենից կներկայացնի նախորդ երկուսի արտադրյալը։ տող ու սյուն;
+#include <iostream>
+void scan(int**, int, int);
+void print(int**, int, int);
+void mul(int**, int**, int**, int, int);
+int main()
+{
+    srand(time(NULL));
+    int row = 0;
+    int col = 0;
+    
+    do{
+        std::cout << "Enter row: ";
+        std::cin >> row;
+    }while(row <= 0);
+    do{
+        std::cout << "Enter col: ";
+        std::cin >> col;
+    }while(col <= 0);
+    
+    int** mat = new int*[row];
+    for(int i = 0; i < row; ++i){
+        mat[i] =  new int[col];
+    }
+    scan(mat, row, col);
+    print(mat, row, col);
+  
+    int** mat2 = new int*[row];
+    for(int i = 0; i < row; ++i){
+        mat2[i] =  new int[col];
+    }
+    scan(mat2, row, col);
+    print(mat2, row, col);
+ 
+    int** mat3 = new int*[row];
+    for(int i = 0; i < row; ++i){
+        mat3[i] =  new int[col];
+    }
+    mul(mat, mat2, mat3, row, col);
+    print(mat3, row, col);
+    
+    return 0;
+}
+
+void scan(int** mat, int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            mat[i][j] = rand()%10;
+        }
+    }
+}
+
+void print(int** mat, int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            std::cout << mat[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+}
+void mul(int** mat, int** mat2, int** mat3, int row, int col){
+    for(int i = 0; i < row; ++i){
+        for(int j = 0; j < col; ++j){
+            for(int z = 0; z < col; ++z){
+                mat3[i][j] += mat[i][z] * mat2[z][j];
+            }
+        }
+    }
+}
