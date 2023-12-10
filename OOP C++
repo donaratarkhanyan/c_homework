@@ -100,3 +100,94 @@ int main()
     
     
 }
+
+2)Task: Create a Simple Library Book Class
+Create a C++ program that defines a simple LibraryBook class. The class should have the following attributes:
+	bookID (int): A unique identifier for each book.
+	title (string): The title of the book.
+	author (string): The author of the book.
+	isAvailable (bool): A flag indicating whether the book is currently available or checked out.
+	
+The class should include the following methods:
+	Display Book Info: A method named displayBookInfo that displays the book information including book ID, title, author, and availability status.
+	Check Out: A method named checkOut that sets isAvailable to false if the book is currently available. If the book is already checked out, print an appropriate message.
+	Check In: A method named checkIn that sets isAvailable to true to indicate that the book has been returned. (edited) 
+
+#ifndef LIBRARYBOOK_H
+#define LIBRARYBOOK_H
+
+class LibraryBook{
+    public:
+    void setId(int);
+    void setTitle(std::string);
+    void setAuther(std::string);
+    void setAvailable(bool);
+    void displayInfo();
+    void chackOut();
+    
+    private:
+        int m_id;
+        std::string m_title;
+        std::string m_auther;
+        bool m_isAvailable;
+};
+#endif
+
+#include <iostream>
+#include "librarybook.h"
+
+void LibraryBook::setId(int id){
+    m_id = id;
+}
+void LibraryBook::setTitle(std::string title){
+    m_title = title;
+}
+void LibraryBook::setAuther(std::string auther){
+    m_auther = auther;
+}
+void LibraryBook::setAvailable(bool isavailable){
+    m_isAvailable = isavailable;
+}
+void LibraryBook::displayInfo(){
+    std::cout << "Book Id: " << m_id << std::endl;
+    std::cout << "Book Title: " << m_title << std::endl;
+    std::cout << "Book Auther: " << m_auther << std::endl;
+    std::cout << "Is Avaliable: " << m_isAvailable << std::endl;    
+}
+
+void LibraryBook::chackOut(){
+    if (m_isAvailable){
+        m_isAvailable = false;
+        std::cout << "Gerqy ka";
+    } else {
+        std::cout << "Girqy chka";
+    }
+    
+}
+
+int main()
+{
+    LibraryBook book;
+    
+    int id;
+    std::cout << "Id: ";
+    std::cin >> id;
+    book.setId(id);
+    
+    std::string title;
+    std::cout << "Title: ";
+    std::cin >> title;
+    book.setTitle(title);
+    
+    std::string auther;
+    std::cout << "Auther: ";
+    std::cin >> auther;
+    book.setAuther(auther);
+
+    book.setAvailable(true);
+    std::cout << std::endl;
+    book.displayInfo();
+    book.chackOut();
+    
+    return 0;
+}
