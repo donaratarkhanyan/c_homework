@@ -191,3 +191,97 @@ int main()
     
     return 0;
 }
+
+3)Task: Creating a Bank Account Class
+The class should have the following features:
+Properties:
+	accountNumber (integer): A unique identifier for each account.
+	accountHolder (string): The name of the account holder.
+	balance (double): The current balance in the account.
+Methods:
+	displayAccountInfo(): A method that displays the account information (account number, account holder, balance).
+	deposit(double amount): A method that adds the specified amount to the account balance.
+	withdraw(double amount): A method that subtracts the specified amount from the account balance, but only if the balance is sufficient. If there is not enough balance, display an error message.
+
+#ifndef BANKACCOUNT_H
+#define BANKACCOUNT_H
+class BankAccount{
+    public:
+        void setAccountNumber(int);
+        void setAccountHolder(std::string);
+        void setBalance(double);
+        void displayAccountInfo();
+        void deposit(double amount);
+        void withdraw(double amount);
+        
+    private:
+        int m_accountNumber;
+        std::string m_accountHolder;
+        double m_balance;
+};
+
+#endif
+
+
+#include <iostream>
+#include "bank.h"
+
+void BankAccount::setAccountNumber(int accountNumber){
+    m_accountNumber = accountNumber;
+}
+void BankAccount::setAccountHolder(std::string accountHolder){
+    m_accountHolder = accountHolder;
+}
+void BankAccount::setBalance(double balance){
+    m_balance = balance;
+}
+
+
+void BankAccount::displayAccountInfo(){
+    std::cout << "Account Number: " << m_accountNumber << std::endl;
+    std::cout << "Account Holder: " << m_accountHolder << std::endl;
+    std::cout << "Balace: " << m_balance << std::endl;
+}
+
+void BankAccount::deposit(double amount){
+    m_balance += amount;
+}
+
+void BankAccount::withdraw(double amount){
+    if(m_balance >= amount){
+        m_balance -= amount;
+    }else{
+        std::cout << "There is not enough balance!" << std::endl;
+    }
+}
+
+int main(){
+    BankAccount bank;
+    
+    int accountNumber = 0;
+    std::cout << "Enter Account Number: ";
+    std::cin >> accountNumber;
+    bank.setAccountNumber(accountNumber);
+    
+    std::string accountHolder;
+    std::cout << "Enter Account Holder: ";
+    std::cin >> accountHolder;
+    bank.setAccountHolder(accountHolder);
+    
+    double balance = 0.0;
+    std::cout << "Balance: ";
+    std::cin >> balance;
+    bank.setBalance(balance);
+    
+    double amount = 0.0;
+    std::cout << "Enter the amount: ";
+    std::cin >> amount;
+    std::cout << std::endl;
+    
+    std::cout << "ACCOUNT:" << std::endl;
+    bank.withdraw(amount);
+    bank.displayAccountInfo();
+    
+    return 0;
+    
+}
