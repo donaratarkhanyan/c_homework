@@ -1,4 +1,4 @@
-1)
+1)Տրված թվի երկուական համակարգի ներկայացման մեջ հաշվել 1-երի քանակը։
 #include <iostream>
 int bit_1(size_t num){
     int count = 0;
@@ -23,11 +23,30 @@ int main()
 }
 
 2rd tarberak
-
-
-2)
 #include <iostream>
 
+int bit_1(int n){
+    int k = 0;
+    while(n){
+        if(n & 1){
+            ++k;
+        }
+        n >>= 1;
+    }
+    return k;
+}
+
+int main()
+{
+    int num = 0;
+    std::cout << "Enter tne number: ";
+    std::cin >> num;
+    std::cout << bit_1(num); 
+    return 0;
+}
+
+2)Ստուգել թվի 1 արժեքով բիթերի քանակը կենտ է, թե զույգ
+#include <iostream>
 int bit_1(size_t num){
     bool x = 0;
     while(num){
@@ -47,7 +66,7 @@ int main()
     return 0;
 }
 
-Recursiv 1
+RECURSIV
 #include <iostream>
 
 int bit_1(size_t num){
@@ -62,6 +81,38 @@ int main()
     std::cout << "Enter the number: ";
     std::cin >> num;
     std::cout << bit_1(num);
+
+    return 0;
+}
+3)Գրել void set(int n, int i) ֆունկցիան, որը տրված n թվի i-րդ բիթը կդարձնի 1։
+#include <iostream>
+
+void set(int n, int i){
+    n |= (0 << i);
+    std::cout << n;
+}
+
+int main()
+{
+    int num = 0;
+    std::cout << "Enter tne number: ";
+    std::cin >> num;
+    set(num, 0); 
+
+    return 0;
+}
+4)Գրել void flip(int n, int i), որը տրված n թվի i-րդ բիթը  կշրջի, այսինքն 1-ը կդարձնի 0, 0-ն:
+#include <iostream>
+void flip(int num, int i){
+    num ^= (1 << i);
+    std::cout << num;
+}
+int main()
+{
+    int num = 0;
+    std::cout << "Enter tne number: ";
+    std::cin >> num;
+    set(num, 0); 
 
     return 0;
 }
