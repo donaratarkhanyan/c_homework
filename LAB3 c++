@@ -136,28 +136,34 @@ void swap_bit(int& n, int i, int j){
 int main()
 {
     int num = 0;
+    std::cout << "Enter the number: ";
     std::cin >> num;
-    swap_bit(num, 0, 3);
-    std::cout << num << std::endl;
+    int i = 0;
+    int j = 0;
+    std::cout << "Enter the i and j: ";
+    std::cin >>  i >> j;
+    swap_bit(num, i, j);
+    std::cout << "New number: " << num;
+    
 
     return 0;
 }
 
 6)Տպել ստացված թվի երկուական համակարգի ներկայացումը։ Օգտագործելով բիթային գործողություններ։
 #include <iostream>
-void binary(int n){
+void binary_bit(int n){
     if(n == 0){
         return;
     }
-    binary(n >> 1);
+    binary_bit(n >> 1);
     std::cout << (n & 1);
 }
-
 int main()
 {
     int num = 0;
+    std::cout << "Enter the number: ";
     std::cin >> num;
-    binary(num);
+    binary_bit(num);
     return 0;
 }
 
@@ -175,7 +181,7 @@ void swap_bit(int& n, int i, int j){
     }
     else{
         return;
-    }   
+    }
 }
 
 void rev_bit(int& n, int i, int j){
@@ -185,17 +191,45 @@ void rev_bit(int& n, int i, int j){
         --j;
     }
 }
+
 int main()
 {
     int num = 0;
+    std::cout << "Enter the number: ";
     std::cin >> num;
-    rev_bit(num, 1, 3);
-    std::cout << num;
-
+    int i = 0;
+    int j = 0;
+    std::cout << "Enter the i and j: ";
+    std::cin >>  i >> j;
+    rev_bit(num, i, j);
+    std::cout << "New reversed number: " << num;
     return 0;
 }
 
 8)Ստուգել թիվը 2-ի աստիճան է, թե ոչ։
+#include <iostream>
+
+void exp_2(int n){
+    if(((n - 1) & n) == 0){
+        std::cout << "Yes";
+    }
+    else{
+        std::cout << "NO";
+    }
+}
+
+int main()
+{
+    int num = 0;
+    std::cout << "Enter the number: ";
+    std::cin >> num;
+    exp_2(num);
+    return 0;
+}
+
+9)Տրված է ամբողջ թվերի զանգված, որում բոլոր էլեմենտները կրկնվում են, բացի մեկից։ 
+Իրականացնել ալգորիթմ, որը կգտնի միակ էլեմենտը O(n) ժամանակում։ 
+Օգտվել բիթային գործողություններից։
 #include <iostream>
 int find(int* arr, int size){
     int x = 0;
@@ -212,13 +246,13 @@ int main()
     return 0;
 }
 
-9)Tveri gumarel bitwize gorcoxutyunnerov
+10)Tveri gumarel bitwize gorcoxutyunnerov
 #include <iostream>
 int sum(int a, int b){
     while(b){
         int c = a & b;
         a ^= b;
-        b = c << 1;
+        b = (c << 1);
     }
     return a;
 }
@@ -231,3 +265,4 @@ int main()
     std::cout << "Sum number: " << sum(a, b) << std::endl;
     return 0;
 }
+
