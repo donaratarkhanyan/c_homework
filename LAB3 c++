@@ -116,3 +116,118 @@ int main()
 
     return 0;
 }
+5)Կատարել swap գործողություն թվի i և j բիթերը տեղափոխելու համար։
+#include <iostream>
+void swap_bit(int& n, int i, int j){
+    if((i == j) || (i < 0) || (i > (sizeof(int) * 8)) || (j < 0) || (j > (sizeof(int) * 8))){
+        return;
+    }
+    bool a = n & (1 << i);
+    bool b = n & (1 << j);
+    if(a != b){
+        n ^= (1 << i);
+        n ^= (1 << j);
+    }
+    else{
+        return;
+    }   
+}
+
+int main()
+{
+    int num = 0;
+    std::cin >> num;
+    swap_bit(num, 0, 3);
+    std::cout << num << std::endl;
+
+    return 0;
+}
+
+6)Տպել ստացված թվի երկուական համակարգի ներկայացումը։ Օգտագործելով բիթային գործողություններ։
+#include <iostream>
+void binary(int n){
+    if(n == 0){
+        return;
+    }
+    binary(n >> 1);
+    std::cout << (n & 1);
+}
+
+int main()
+{
+    int num = 0;
+    std::cin >> num;
+    binary(num);
+    return 0;
+}
+
+7)Շրջել թվի բիթերը(reverse), օրինակ՝ 11110000 -> 00001111։
+#include <iostream>
+void swap_bit(int& n, int i, int j){
+    if((i == j) || (i < 0) || (i > (sizeof(int) * 8)) || (j < 0) || (j > (sizeof(int) * 8))){
+        return;
+    }
+    bool a = n & (1 << i);
+    bool b = n & (1 << j);
+    if(a != b){
+        n ^= (1 << i);
+        n ^= (1 << j);
+    }
+    else{
+        return;
+    }   
+}
+
+void rev_bit(int& n, int i, int j){
+    while(i < j){
+        swap_bit(n, i, j);
+        ++i;
+        --j;
+    }
+}
+int main()
+{
+    int num = 0;
+    std::cin >> num;
+    rev_bit(num, 1, 3);
+    std::cout << num;
+
+    return 0;
+}
+
+8)Ստուգել թիվը 2-ի աստիճան է, թե ոչ։
+#include <iostream>
+int find(int* arr, int size){
+    int x = 0;
+    for(int i = 0; i < size; ++i){
+        x ^= arr[i];
+    }
+    return x;
+}
+int main()
+{
+    size_t size = 7;
+    int arr[size] = {1, 3, 1, 3, 4, 2, 4};
+    std::cout << "The number: " << find(arr, size) << std::endl;
+    return 0;
+}
+
+9)Tveri gumarel bitwize gorcoxutyunnerov
+#include <iostream>
+int sum(int a, int b){
+    while(b){
+        int c = a & b;
+        a ^= b;
+        b = c << 1;
+    }
+    return a;
+}
+int main()
+{
+    int a = 0; 
+    int b = 0;
+    std::cout << "Enter numbers: ";
+    std::cin >> a >> b;
+    std::cout << "Sum number: " << sum(a, b) << std::endl;
+    return 0;
+}
