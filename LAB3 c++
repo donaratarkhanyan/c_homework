@@ -246,7 +246,8 @@ int main()
     return 0;
 }
 
-10)Tveri gumarel bitwize gorcoxutyunnerov
+10)Իրականացնել ֆունկցիա, որը որպես արգումենտ կստանա երկու բնական թվեր և կհաշվի դրանց գումարը։ 
+Օգտագործել միայն բիթային գործողություններ։
 #include <iostream>
 int sum(int a, int b){
     while(b){
@@ -265,4 +266,112 @@ int main()
     std::cout << "Sum number: " << sum(a, b) << std::endl;
     return 0;
 }
+11)Իրականացնել ֆունկցիա, որը որպես արգումենտ կստանա երկու բնական թվեր և կհաշվի դրանց արտադրյալը։ 
+Օգտագործել միայն բիթային գործողություններ։
 
+
+12)Տրված ամբողջ թվային զանգվածը սորտավորել Bubble Sort ալգորիթմով։
+
+
+13)Տրված ամբողջ թվային զանգվածը սորտավորել Insertion Sort ալգորիթմով։
+
+
+14)Տրված ամբողջ թվային զանգվածը սորտավորել selection Sort ալգորիթմով։
+#include <iostream>
+
+void selection_sort(int* arr, int n){
+    for(int i = 0; i < n - 1; ++i){
+        int ind = i;
+        for(int j = i + 1; j < n; ++j){
+            if(arr[j] < arr[ind]){
+                ind = j;
+            }
+        }
+        int tmp = arr[i]; 
+        arr[i] = arr[ind];
+        arr[ind] = tmp;
+    }
+}
+
+int main()
+{
+    const int size = 7;
+    int arr[size] = {1, 5, 9, 2, 1, 5, 4};
+    selection_sort(arr, size);
+    for(int i = 0; i < size; ++i){
+        std::cout << arr[i] << " ";
+    }
+    return 0;
+}
+
+15)merge sort
+#include <iostream>
+
+void merge(int* arr, int f, int m, int e){
+    int f1 = f;
+    int e1 = m;
+    int f2 = m + 1;
+    int e2 = e;
+    int s = e - f + 1;
+    int* tmp = new int[s];
+    int ind = 0;
+    while(f1 <= e1 && f2 <= e2){
+        if(arr[f1] <= arr[f2]){
+            tmp[ind] = arr[f1];
+            ++f1;
+        }
+        else{
+            tmp[ind] = arr[f2];
+            ++f2;
+        }
+        ++ind;
+    }
+    while(f1 <= e1){
+        tmp[ind] = arr[f1];
+        ++f1;
+        ++ind;
+    }
+    while(f2 <= e2){
+        tmp[ind] = arr[f2];
+        ++f2;
+        ++ind;
+    }
+    for(int i = f; i < s; ++i){
+        arr[f + i] = tmp[i];
+    }
+    delete[] tmp;
+}
+
+void merge_sort(int* arr, int f, int e){
+    if(e > f){
+        int m = f + (e - f) / 2;
+        merge_sort(arr, f, m);
+        merge_sort(arr, m + 1, e);
+        
+        merge(arr, f, m, e);
+    }
+}
+
+
+int main()
+{
+    int size = 0;
+    std::cout << "Enter the array size: ";
+    std::cin >> size;
+    int* arr = new int[size];
+    for(int i = 0; i < size; ++i){
+        std::cout << "Enter the sorted array: ";
+        std::cin >> arr[i];
+    }
+    
+    merge_sort(arr, 0, size - 1);
+    
+    std::cout << "Sorted array! " << std::endl;
+    for(int i = 0; i < size; ++i){
+        std::cout << arr[i] << " ";
+    }
+    
+    delete[] arr;
+    
+    return 0;
+}
