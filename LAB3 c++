@@ -268,13 +268,58 @@ int main()
 }
 11)Իրականացնել ֆունկցիա, որը որպես արգումենտ կստանա երկու բնական թվեր և կհաշվի դրանց արտադրյալը։ 
 Օգտագործել միայն բիթային գործողություններ։
+#include <iostream>
 
+int sum_bit(int a, int b){
+    while(b){
+        int c = (a & b);
+        a ^= b;
+        b = (c << 1);
+    }
+    return a;
+}
+
+int mul_bit(int a, int b){
+    int res = 0;
+    while(b){
+        if(b & 1){
+            res = sum_bit(res, a);
+        }
+        a <<= 1;
+        b >>= 1;
+    }
+    return res;
+}
+
+int main(){
+    std::cout << mul_bit(7, 4);
+}
 
 12)Տրված ամբողջ թվային զանգվածը սորտավորել Bubble Sort ալգորիթմով։
 
 
 13)Տրված ամբողջ թվային զանգվածը սորտավորել Insertion Sort ալգորիթմով։
+#include <iostream>
+void insertion_sort(int* arr, int n){
+    for(int i = 1; i < n; ++i){
+        int tmp = arr[i];
+        int j = i - 1;
+        while(j >= 0 && arr[j] > tmp){
+            arr[j + 1] = arr[j];
+            --j;
+        }
+        arr[j + 1] = tmp;
+    }
+}
 
+int main(){
+    size_t size = 5;
+    int arr[size] = {4, 1, 5, 8, 3};
+    insertion_sort(arr, size);
+    for(int i = 0; i < size; ++i){
+        std::cout << arr[i] << " ";
+    }
+}
 
 14)Տրված ամբողջ թվային զանգվածը սորտավորել selection Sort ալգորիթմով։
 #include <iostream>
