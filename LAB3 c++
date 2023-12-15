@@ -322,34 +322,32 @@ int main(){
 }
 
 14)Տրված ամբողջ թվային զանգվածը սորտավորել selection Sort ալգորիթմով։
-#include <iostream>
+#include <iostream> 
 
 void selection_sort(int* arr, int n){
     for(int i = 0; i < n - 1; ++i){
         int ind = i;
         for(int j = i + 1; j < n; ++j){
-            if(arr[j] < arr[ind]){
+            if (arr[j] > arr[ind]){
                 ind = j;
             }
         }
-        int tmp = arr[i]; 
-        arr[i] = arr[ind];
-        arr[ind] = tmp;
+        std::swap(arr[i], arr[ind]);
     }
 }
 
-int main()
-{
-    const int size = 7;
-    int arr[size] = {1, 5, 9, 2, 1, 5, 4};
-    selection_sort(arr, size);
-    for(int i = 0; i < size; ++i){
+int main(){
+    int arr[5] = {1, 4, 2, 5, 6};
+    selection_sort(arr, 5);
+    for(int i = 0; i < 5; ++i){
         std::cout << arr[i] << " ";
     }
+    std::cout << std::endl;
     return 0;
 }
 
-15)merge sort
+
+15)Տրված ամբողջ թվային զանգվածը սորտավորել Merge Sort ալգորիթմով։
 #include <iostream>
 
 void merge(int* arr, int f, int m, int e){
@@ -421,7 +419,7 @@ int main()
     return 0;
 }
 
-16)quick sort
+16)Տրված ամբողջ թվային զանգվածը սորտավորել Quicksort ալգորիթմով։
 #include <iostream>
 
 int partition(int* arr, int f, int e){
