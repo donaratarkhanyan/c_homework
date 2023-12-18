@@ -296,7 +296,49 @@ int main(){
 }
 
 12)Տրված ամբողջ թվային զանգվածը սորտավորել Bubble Sort ալգորիթմով։
+#include <iostream>
 
+void bubble_sort(int*, int);
+void swap(int&, int&);
+void print(int*, int);
+
+int main()
+{
+    size_t n = 10;
+    int arr[n];
+    for(int i = 0; i < n; ++i){
+        arr[i] = rand()%9;
+    }
+    print(arr, n);
+    bubble_sort(arr, n);
+    print(arr, n);
+    return 0;
+}
+void bubble_sort(int* arr, int n){
+    for(int i = 0; i < n - 1; ++i){
+        bool flag = false;
+        for(int j = 0; j < n - 1 - i; ++j){
+            if (arr[j] > arr[j + 1]){
+                swap(arr[j], arr[j + 1]);
+                flag = true;
+            }
+        }
+        if (!flag){
+            break;
+        }
+    }
+}
+void swap(int& a, int& b){
+    int tmp = a;
+    a = b; 
+    b = tmp;
+}
+void print(int* arr, int n){
+    for(int i = 0; i < n; ++i){
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl << std::endl;
+}
 
 13)Տրված ամբողջ թվային զանգվածը սորտավորել Insertion Sort ալգորիթմով։
 #include <iostream>
