@@ -35,6 +35,37 @@ int main(){
     return 0;
 }
 2)Իրականացնել ծրագիր, որը ստանում է ֆայլ և տրամադրում տեքստի մասին վիճակագրություն՝ տողերի քանակը, բառերի քանակը և նիշերի քանակը։
+#include <iostream>
+#include <fstream>
+
+int main(){
+
+    std::string s;
+    std::cout << "Enter the file name: ";
+    std::cin >> s;
+
+    int sym = 0;
+    int bar = 0;
+    int tox = 0;
+
+    std::ifstream f1(s);
+    std::string str;
+    while(std::getline(f1, str), !f1.eof()){
+        for(int i = 0; i < str.size(); ++i){
+            if (str[i] != ' '){
+                ++sym;
+            }
+            if ((str[i] != ' ' && str[i + 1] == ' ') || i == str.size() - 1){
+                ++bar;
+            }
+        }
+        ++tox;
+    }
+    std::cout << "Tox: " << tox << std::endl;
+    std::cout << "Bar: " << bar << std::endl;
+    std::cout << "Symble: " << sym << std::endl;
+    return 0;
+}
 
 
 3)Իրականացնել ծրագիր, որը ստանում է տեքստային ֆայլ, ապակոդավորում է ֆայլի պարունակությունը և ապակոդավորած ֆայլի պարունակությունը տեղադրում է նոր ֆայլում։ 
@@ -73,6 +104,44 @@ int main(){
 
 
 4)Իրականացնել ծրագիր, որը ստանում է ֆայլ և սեղմում է (compress) ֆայլի պարունակությունը օգտագործելով RLE - Run-Length Encoding ալգորիթմը։
+#include <iostream>
+#include <fstream>
+
+std::string foo(std::string& str){
+    std::string tmp;
+    for(int i = 0; i < str.size(); ++i){
+        int count = 1;
+        while(i < str.size() - 1 && str[i] == str[i + 1]){
+            ++count;
+            ++i;
+        }
+        tmp += count + '0'; 
+        tmp += str[i];
+    }
+    
+    std::cout << tmp << std::endl;
+    return tmp;
+}
+
+int main(){
+    std::string s1;
+    std::string s2;
+    std::cout << "Enter the input file name: ";
+    std::cin >> s1;
+    std::cout << "Enter the output file name: ";
+    std::cin >> s2;
+
+    std::ifstream f1(s1);
+    std::ofstream f2(s2);
+    std::string str;
+    while(std::getline(f1, str), !f1.eof()){
+        f2 << foo(str) << std::endl;
+    }
+    f1.close();
+    f2.close();
+
+    return 0;
+}
 
 
 5)Իրականացնել ծրագիր, որը ստանում է երկու տեքստային ֆայլ և համեմատում նրանց պարունակությունը։ 
