@@ -72,9 +72,67 @@ int main(){
 Իրականացնել խնդիրը Caesar cipher և XOR կոդավորումների հիման վրա։
 #include <iostream>
 #include <fstream>
+
+void encode(std::string& ch, int n){
+    for(int i = 0; i < ch.size(); ++i){
+        if(ch[i] >= 'a' && ch[i] <= 'z'){
+            if (ch[i] + n > 'z'){
+                ch[i] = ch[i] + n  - 26;
+            } else if (ch[i] + n < 'a'){ 
+                ch[i] = ch[i] + n + 26;
+            } else{
+                ch[i] += n;
+            }
+        }
+        if(ch[i] >= 'A' && ch[i] <= 'Z'){
+            if (ch[i] + n > 'Z'){
+                ch[i] = ch[i] + n  - 26;
+            } else if (ch[i] + n < 'A'){
+                ch[i] = ch[i] + n + 26;
+            } else{
+                ch[i] += n;
+            }
+        }
+    }
+}
+
+
+int main(){
+    std::string s1;
+    std::string s2;
+    int n = 0;
+    bool b;
+    std::cout << "Enter input file name: ";
+    std::cin >> s1;
+    std::cout << "Enter output file name: ";
+    std::cin >> s2;
+    std::cout << "Enter key: ";
+    std::cin >> n;
+    std::cout << "Enter \n 1) 1 - code \n 2) 0 - decode \n: ";
+    std::cin >> b;
+    if (!b){
+        n = -n;
+        }
+        n %= 26;
+        std::ifstream f1(s1);
+        std::ofstream f2(s2);
+        std::string str;
+        while(std::getline(f1, str), !f1.eof()){
+            encode(str, n);
+            f2 << str << std::endl;
+        }
+        f1.close();
+        f2.close();
+
+    return 0;
+}
+ XOR կոդավորումների հիման վրա։
+#include <iostream>
+#include <fstream>
+
 void xorr(std::string& str, char key){
     for(int i = 0; i < str.size(); ++i){
-        str[i] ^= key;
+            str[i] ^= key;
     }
 }
 
@@ -82,6 +140,7 @@ int main(){
     std::string s1;
     std::string s2;
     int key = 0;
+    bool b = false;
     std::cout << "Enter the input file name: ";
     std::cin >> s1;
     std::cout << "Enter the output file name: ";
@@ -97,11 +156,10 @@ int main(){
         f2 << str << std::endl;
     }
     f1.close();
-    f2.close();
+    f1.close();
 
     return 0;
 }
-
 
 4)Իրականացնել ծրագիր, որը ստանում է ֆայլ և սեղմում է (compress) ֆայլի պարունակությունը օգտագործելով RLE - Run-Length Encoding ալգորիթմը։
 #include <iostream>
@@ -146,7 +204,121 @@ int main(){
 
 5)Իրականացնել ծրագիր, որը ստանում է երկու տեքստային ֆայլ և համեմատում նրանց պարունակությունը։ 
 Ծրագիրը ստեղծում է նոր ֆայլ, որում տեղադրում է երկու ֆայլերի միջև տարբերությունները՝ նշելով որ տողերում;
+#include <iostream>
+#include <fstream>
 
+bool equal(std::string s1, std::string s2){
+    if (s1.size() != s2.size()){
+        return false;
+    }
+    for(int i = 0; i < s1.size() || i < s2.size(); ++i){
+        if(s1[i] != s2[i]){
+            return false;
+        }
+        
+    }
+    return true;
+}
+
+int main(){
+    std::string s1;
+    std::string s2;
+    std::string s3;
+    std::string str1;
+    std::string str2;
+
+    std::cout << "Enter input file1: ";
+    std::cin >> s1;
+    std::cout << "Enter input file2: ";
+    std::cin >> s2;
+    std::cout << "Enter output file2: ";
+    std::cin >> s3;
+
+
+    std::ifstream f1(s1);
+    std::ifstream f2(s2);
+    std::ofstream f3(s3);
+
+   int count = 0;
+    while(std::getline(f1, str1), std::getline(f2, str2), (!f1.eof() || !f2.eof())){
+            count++;
+            if(!check(str1, str2)){
+                f3 << "Line " << count << ": " << str1 << " | " << str2 << std::endl;
+            }
+        
+    }
+    f1.close();
+    f2.close();
+    f3.close();
+
+}
 
 6)Իրականացնել ծրագիր, որը ստանում է տեքստային ֆայլ և ֆայլում փնտրում որոշակի բառ կամ արտահայտու թյուն։ 
 Վերադարձնել այն տողերի համարները, որում առկա է փնտրվող բառը կամ արտահայտությունը։
+
+#include <iostream>
+#include <fstream>
+
+bool foo(std::string s1, std::string s2)
+{
+	bool flag = false;
+	int tmp = 0;
+	int s1_size = 0;
+	int s2_size = 0;
+
+	while(s1[s1_size] != '\0') 
+	{
+		++s1_size;
+	}
+	while(s2[s2_size] != '\0') 
+	{
+		++s2_size;
+	}
+
+	for(int i = 0; i < s1_size; ++i) 
+	{
+		tmp = i;
+		for(int k = 0; k < s2_size; ++k) 
+		{
+			if(s1[i] != s2[k]) 
+			{
+				flag = false;
+				i = tmp;
+				break;
+			}
+			++i;
+			flag = true;
+		}
+		if(flag) 
+		{
+			return  true;
+		}
+	}
+
+	return false;	
+}
+
+int main()
+{
+	std::string input;
+	std::string output;
+	std::string word;
+	std::cout << "Please enter 2 text names: ";
+	std::cin >> input >> output;
+	std::cout << "Please enter world: ";
+	std::cin >> word;
+
+	std::ifstream fi(input);
+	std::ofstream fo(output);
+	std::string str;
+	int line = 0;
+	while(std::getline(fi, str), !fi.eof()) {
+		++line;
+		if(foo(str, word))	{
+			fo << line << std::endl;
+		}
+	}
+	fi.close();
+	fo.close();
+}
+
