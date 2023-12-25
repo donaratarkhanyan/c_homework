@@ -322,3 +322,58 @@ int main()
 	fo.close();
 }
 
+7)Իրականացնել ֆունկցիա, որը ստանում է սորտավորված զանգված, զանգվածի չափը և թիվ՝ target։ Եթե զանգվածում առկա է երկու թիվ, որոնց գումարը հավասար է target-ին, վերադարձնել այդ թվերի ինդեքսները, հակառակ դեպքում՝ վերադարձնել {-1, -1}։ 
+Ֆունկցիան իրականացնել O(n) ժամանակային բարդությամբ։ Օրինակ՝
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+
+#include <iostream>
+struct A {
+    int a;
+    int b;
+};
+void print(int*, int);
+A twoSum(int*, int, int);
+
+int main() {
+    size_t size = 7;
+    int arr[size] = {0, 1, 4, 7, 9, 12, 17};
+    int target = 0;
+    std::cout << "Enter the target element: ";
+    std::cin >> target;
+    print(arr, size);
+    A result = twoSum(arr, size, target);
+    std::cout << "Indexes: " << result.a << " " << result.b << std::endl;
+
+    return 0;
+}
+
+void print(int* arr, int size) {
+    for (int i = 0; i < size; ++i) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+A twoSum(int* arr, int size, int target) {
+    A ob;
+    int j = size - 1;
+    int i = 0;
+    while (i < j) {
+        int tmp = arr[i] + arr[j];
+        if (tmp == target) {
+            ob.a = i;
+            ob.b = j;
+            return ob;
+        } else if (tmp < target) {
+            ++i;
+        } else {
+            --j;
+        }
+    }
+    ob.a = -1;
+    ob.b = -1;
+    return ob;
+}
+
+
