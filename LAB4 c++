@@ -418,4 +418,49 @@ int max_count(int* arr, int size){
     }
     return max;
 }
+9)Իրականացնել ծրագիր, որը ստանում է տեքստային ֆայլ, որը պարունակում է էլետկտրոնային հասցեներ (mail)։ 
+Ֆայլում էլեկտրոնային հասցեները դասավորված են իրար տակ, հերթականությամբ։ 
+Անհրաժեշտ է հաշվել և էկրանին տպել ճիշտ ձևաչափի էլեկտրոնային հասցեների քանակը։ 
+Էլեկտրոնային հասցեն համարվում է ճիշտ, եթե այն ունի հետևյալ օրինակներից որևիցե մեկի ձևաչափը։
+abc_abc@mail.com
+abc.abc@mail.com
+abc@mail.com
+Որտեղ “abc” բառի փոխարեն կարող է լինել ամենաշատը 10 երկարություն ունեցող ցանկացած տող, բաղկացած լատինական այբուբենի տառերից և թվանշաններից։ 
+Էլեկտրոնային հասցեն չի կարող սկսվել թվանշանով և պարունակել այլ նիշեր, բացի օրինակում նշված ձևաչափերի ‘ . ’ և ‘_’ նիշերը։
+
+#include <iostream>
+#include <fstream>
+#include <regex>
+bool mail_isvalid(const std::string& str){
+    std::regex mail (“^[a-zA-Z][a-zA-Z0-9]{0,9}([\\._][a-zA-Z0-9]{1,10})?@mail\\.com$“);
+    return std::regex_match(str, mail);
+}
+int main(){
+    int count = 0;
+    std::string s1;
+    std::string str;
+    std::cout << “Enter  the input file: “;
+    std::cin >> s1;
+    std::ifstream f1(s1);
+    std::cout << “~~~~~~~~~~~~~~~~~~~~~~~” << std::endl;
+    if(!f1.is_open()){
+        throw std::invalid_argument(“”);
+    }
+    while(std::getline(f1, str), !f1.eof()) {
+        if(mail_isvalid(str)) {
+            std::cout <<  “Is valid mail address!!” << std::endl;
+            std::cout << str << std::endl;
+            ++count;
+        }
+        else {
+            std::cout << “Is invalid mail address!!” << std::endl;
+            std::cout << str << std::endl;
+        }
+    }
+    std::cout << “~~~~~~~~~~~~~~~~~~~~~~~” << std::endl;
+    f1.close();
+    std::cout << “Valid mails count = ” << count << std::endl;
+    std::cout << “~~~~~~~~~~~~~~~~~~~~~~~” << std::endl;
+    return 0;
+}
 
